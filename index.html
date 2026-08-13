@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Art vs. Artist — a study of television and creator controversy</title>
+<meta name="description" content="A short, anonymous research study: does knowing about a TV creator's misconduct change how much you enjoy their show? Watch three clips, rate them, and see the live results.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Art vs. Artist — a 7-minute anonymous study">
+<meta property="og:description" content="Does knowing about a creator's misconduct change how much you enjoy their show? Watch three clips, rate them, then see what everyone else said.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+<style>
+/* ==========================================================================
+   Art vs. Artist — stylesheet
+   Palette values are the validated reference instance (see dataviz skill).
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  --surface-1: #fcfcfb;
+  --plane:     #f9f9f7;
+  --raised:    #ffffff;
+
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #6f6e69;
+  --axis-muted:     #898781;
+
+  --grid:     #e1e0d9;
+  --baseline: #c3c2b7;
+  --border:   rgba(11, 11, 11, 0.10);
+  --border-strong: rgba(11, 11, 11, 0.18);
+
+  /* categorical — validated pair */
+  --series-1: #2a78d6;   /* Control  */
+  --series-2: #eb6834;   /* Informed */
+
+  /* diverging arms for the ordered 1–7 scale */
+  --div-neg-3: #d03b3b;
+  --div-neg-2: #e07070;
+  --div-neg-1: #efaaaa;
+  --div-mid:   #dedcd6;
+  --div-pos-1: #9ec5f4;
+  --div-pos-2: #5598e7;
+  --div-pos-3: #256abf;
+
+  --good: #0ca30c;
+  --accent-soft: rgba(42, 120, 214, 0.09);
+  --shadow: 0 1px 2px rgba(11,11,11,.04), 0 8px 24px -12px rgba(11,11,11,.14);
+
+  --radius: 14px;
+  --radius-sm: 9px;
+  --maxw: 760px;
+
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --surface-1: #1a1a19;
+    --plane:     #0d0d0d;
+    --raised:    #201f1e;
+
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #a5a49c;
+    --axis-muted:     #898781;
+
+    --grid:     #2c2c2a;
+    --baseline: #383835;
+    --border:   rgba(255, 255, 255, 0.10);
+    --border-strong: rgba(255, 255, 255, 0.20);
+
+    --series-1: #3987e5;
+    --series-2: #d95926;
+
+    --div-neg-3: #d03b3b;
+    --div-neg-2: #b04a4a;
+    --div-neg-1: #8a4444;
+    --div-mid:   #383835;
+    --div-pos-1: #1c4a7a;
+    --div-pos-2: #256abf;
+    --div-pos-3: #3987e5;
+
+    --accent-soft: rgba(57, 135, 229, 0.14);
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-1: #1a1a19;
+  --plane:     #0d0d0d;
+  --raised:    #201f1e;
+  --text-primary:   #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted:     #a5a49c;
+  --grid:     #2c2c2a;
+  --baseline: #383835;
+  --border:   rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.20);
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --div-neg-3: #d03b3b;
+  --div-neg-2: #b04a4a;
+  --div-neg-1: #8a4444;
+  --div-mid:   #383835;
+  --div-pos-1: #1c4a7a;
+  --div-pos-2: #256abf;
+  --div-pos-3: #3987e5;
+  --accent-soft: rgba(57, 135, 229, 0.14);
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--plane);
+  color: var(--text-primary);
+  line-height: 1.62;
+  font-size: 17px;
+  letter-spacing: -0.003em;
+}
+
+@media (max-width: 640px) { body { font-size: 16px; } }
+
+h1, h2, h3 { line-height: 1.22; letter-spacing: -0.021em; margin: 0 0 .5em; font-weight: 640; }
+h1 { font-size: clamp(1.75rem, 1.3rem + 2vw, 2.5rem); }
+h2 { font-size: clamp(1.3rem, 1.1rem + 1vw, 1.6rem); }
+h3 { font-size: 1.06rem; font-weight: 620; }
+p  { margin: 0 0 1em; }
+a  { color: var(--series-1); text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 88px; }
+.wrap--wide { max-width: 1080px; }
+
+/* ---------- top bar ---------------------------------------------------- */
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  background: color-mix(in srgb, var(--plane) 86%, transparent);
+  backdrop-filter: saturate(1.6) blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.topbar__inner {
+  max-width: 1080px; margin: 0 auto; padding: 11px 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.brand { font-weight: 660; font-size: .95rem; letter-spacing: -.015em; }
+.brand span { color: var(--text-muted); font-weight: 480; }
+.topbar__spacer { flex: 1; }
+
+.iconbtn {
+  border: 1px solid var(--border); background: var(--raised); color: var(--text-secondary);
+  border-radius: 9px; height: 34px; min-width: 34px; padding: 0 10px;
+  font: inherit; font-size: .82rem; cursor: pointer; display: inline-flex;
+  align-items: center; gap: 6px; justify-content: center;
+}
+.iconbtn:hover { border-color: var(--border-strong); color: var(--text-primary); }
+
+/* progress rail */
+.rail { height: 3px; background: var(--grid); }
+.rail__fill { height: 100%; background: var(--series-1); width: 0; transition: width .45s cubic-bezier(.2,.8,.2,1); }
+
+/* ---------- generic blocks --------------------------------------------- */
+.card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: var(--shadow);
+}
+@media (max-width: 640px) { .card { padding: 20px 17px; border-radius: 12px; } }
+
+.step { padding-top: 40px; }
+.step[hidden] { display: none; }
+
+.eyebrow {
+  font-size: .74rem; font-weight: 660; letter-spacing: .085em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 10px;
+}
+.lede { font-size: 1.08rem; color: var(--text-secondary); }
+.muted { color: var(--text-muted); }
+.small { font-size: .87rem; }
+.tiny  { font-size: .79rem; line-height: 1.5; }
+
+.btn {
+  appearance: none; border: 0; border-radius: 11px; cursor: pointer;
+  font: inherit; font-weight: 580; font-size: 1rem;
+  padding: 13px 26px; background: var(--series-1); color: #fff;
+  transition: transform .08s ease, filter .15s ease;
+}
+.btn:hover { filter: brightness(1.07); }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: .42; cursor: not-allowed; filter: none; }
+.btn--ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+.btn--ghost:hover { color: var(--text-primary); border-color: var(--border-strong); filter: none; }
+.btn--wide { width: 100%; }
+.btnrow { display: flex; gap: 11px; flex-wrap: wrap; align-items: center; margin-top: 22px; }
+
+/* ---------- forms ------------------------------------------------------ */
+.field { margin-bottom: 24px; }
+.field > label, .qlabel {
+  display: block; font-weight: 580; margin-bottom: 4px; font-size: .97rem;
+}
+.hint { color: var(--text-muted); font-size: .85rem; margin: 0 0 9px; }
+
+input[type=text], select, textarea {
+  width: 100%; font: inherit; color: var(--text-primary);
+  background: var(--raised); border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm); padding: 11px 13px;
+}
+textarea { min-height: 132px; resize: vertical; line-height: 1.6; }
+input:focus-visible, select:focus-visible, textarea:focus-visible,
+.btn:focus-visible, .iconbtn:focus-visible, .scale__opt:focus-within {
+  outline: 2px solid var(--series-1); outline-offset: 2px;
+}
+
+.chiprow { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  position: relative; display: inline-flex;
+  border: 1px solid var(--border-strong); border-radius: 999px;
+  padding: 8px 15px; font-size: .89rem; cursor: pointer; background: var(--raised);
+  color: var(--text-secondary);
+}
+.chip input { position: absolute; opacity: 0; inset: 0; cursor: pointer; margin: 0; }
+.chip:hover { border-color: var(--series-1); }
+.chip:has(input:checked) {
+  background: var(--series-1); border-color: var(--series-1); color: #fff; font-weight: 560;
+}
+.chip:has(input:focus-visible) { outline: 2px solid var(--series-1); outline-offset: 2px; }
+
+/* 1–7 scale */
+.scale { margin-top: 10px; }
+.scale__opts { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.scale__opt {
+  position: relative; display: flex; flex-direction: column; align-items: center;
+  gap: 5px; padding: 9px 3px 8px; border-radius: 10px; cursor: pointer;
+  border: 1px solid var(--border-strong); background: var(--raised);
+  text-align: center; min-height: 62px; justify-content: center;
+}
+.scale__opt input { position: absolute; opacity: 0; inset: 0; cursor: pointer; margin: 0; }
+.scale__num { font-weight: 620; font-size: 1.02rem; }
+.scale__txt { font-size: .65rem; line-height: 1.22; color: var(--text-muted); }
+.scale__opt:hover { border-color: var(--series-1); }
+.scale__opt:has(input:checked) {
+  background: var(--series-1); border-color: var(--series-1); color: #fff;
+}
+.scale__opt:has(input:checked) .scale__txt { color: rgba(255,255,255,.9); }
+.scale__ends { display: flex; justify-content: space-between; margin-top: 7px; font-size: .78rem; color: var(--text-muted); }
+@media (max-width: 560px) {
+  .scale__txt { display: none; }
+  .scale__opt { min-height: 46px; }
+}
+
+.qblock { padding: 18px 0; border-top: 1px solid var(--grid); }
+.qblock:first-of-type { border-top: 0; padding-top: 4px; }
+
+/* ---------- background / stimulus panel -------------------------------- */
+.showhead { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 2px; }
+.showhead h2 { margin: 0; }
+.tag {
+  font-size: .72rem; font-weight: 620; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--text-muted); border: 1px solid var(--border-strong);
+  border-radius: 999px; padding: 3px 9px;
+}
+
+.brief {
+  background: var(--accent-soft); border: 1px solid var(--border);
+  border-left: 3px solid var(--series-1);
+  border-radius: var(--radius-sm); padding: 17px 19px; margin: 18px 0 6px;
+}
+.brief p:last-child { margin-bottom: 0; }
+.brief__label {
+  font-size: .74rem; font-weight: 660; letter-spacing: .085em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 7px;
+}
+
+.srcs { font-size: .81rem; color: var(--text-muted); margin: 10px 0 0; }
+.srcs a { color: var(--text-secondary); }
+
+.videowrap {
+  position: relative; padding-top: 56.25%; margin: 22px 0 6px;
+  background: #000; border-radius: var(--radius-sm); overflow: hidden;
+  border: 1px solid var(--border);
+}
+.videowrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.videometa { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  font-size: .8rem; color: var(--text-muted); margin-bottom: 20px; }
+
+/* ---------- dashboard -------------------------------------------------- */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); gap: 12px; margin: 0 0 26px; }
+.kpi {
+  background: var(--surface-1); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 15px 17px;
+}
+.kpi__label { font-size: .79rem; color: var(--text-muted); margin-bottom: 3px; }
+.kpi__value { font-size: 1.85rem; font-weight: 640; letter-spacing: -.028em; }
+.kpi__sub { font-size: .77rem; color: var(--text-muted); }
+
+.hero {
+  background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 28px; margin-bottom: 26px; box-shadow: var(--shadow);
+}
+.hero__fig { font-size: clamp(2.9rem, 2rem + 4vw, 4rem); font-weight: 660; letter-spacing: -.035em; line-height: 1; }
+.hero__cap { color: var(--text-secondary); margin-top: 9px; max-width: 46ch; }
+
+.chartcard {
+  background: var(--surface-1); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 24px 18px; margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.chartcard__head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 4px; }
+.chartcard__head h3 { margin: 0; }
+.chartcard__sub { color: var(--text-muted); font-size: .86rem; margin: 0 0 14px; }
+
+.legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 0 0 14px; font-size: .84rem; color: var(--text-secondary); }
+.legend__item { display: inline-flex; align-items: center; gap: 7px; }
+.legend__swatch { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+
+.chart { width: 100%; overflow: visible; display: block; }
+.chart text { font-family: var(--sans); }
+.ax { font-size: 11.5px; fill: var(--axis-muted); font-variant-numeric: tabular-nums; }
+.axlabel { font-size: 12.5px; fill: var(--text-secondary); }
+.vlabel { font-size: 11.5px; fill: var(--text-secondary); font-variant-numeric: tabular-nums; font-weight: 560; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.baseline { stroke: var(--baseline); stroke-width: 1; }
+
+.tabletoggle {
+  margin-left: auto; flex: none;
+  background: none; border: 1px solid var(--border); color: var(--text-muted);
+  border-radius: 8px; font: inherit; font-size: .78rem; padding: 4px 10px; cursor: pointer;
+}
+.tabletoggle:hover { color: var(--text-primary); border-color: var(--border-strong); }
+
+table.dt { width: 100%; border-collapse: collapse; font-size: .85rem; margin-top: 12px; }
+table.dt th, table.dt td { text-align: right; padding: 7px 9px; border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; }
+table.dt th:first-child, table.dt td:first-child { text-align: left; font-variant-numeric: normal; }
+table.dt th { color: var(--text-muted); font-weight: 580; font-size: .79rem; }
+
+.tip {
+  position: fixed; pointer-events: none; z-index: 90; opacity: 0;
+  background: var(--text-primary); color: var(--surface-1);
+  border-radius: 8px; padding: 7px 10px; font-size: .8rem; line-height: 1.45;
+  transition: opacity .1s ease; max-width: 240px; box-shadow: 0 6px 20px -6px rgba(0,0,0,.4);
+}
+.tip strong { font-weight: 620; }
+
+.quotes { display: grid; gap: 11px; }
+.quote {
+  background: var(--surface-1); border: 1px solid var(--border);
+  border-left: 3px solid var(--baseline); border-radius: var(--radius-sm);
+  padding: 13px 16px; font-size: .92rem; color: var(--text-secondary);
+}
+.quote--informed { border-left-color: var(--series-2); }
+.quote--control  { border-left-color: var(--series-1); }
+.quote__meta { font-size: .74rem; color: var(--text-muted); margin-top: 7px; text-transform: uppercase; letter-spacing: .05em; }
+
+.notice {
+  border: 1px solid var(--border); border-left: 3px solid var(--baseline);
+  background: var(--surface-1); border-radius: var(--radius-sm);
+  padding: 14px 17px; font-size: .88rem; color: var(--text-secondary); margin: 18px 0;
+}
+.notice--warn { border-left-color: #fab219; }
+
+ul.clean { padding-left: 1.15em; margin: 0 0 1em; }
+ul.clean li { margin-bottom: .42em; }
+
+.divider { height: 1px; background: var(--grid); border: 0; margin: 34px 0; }
+
+.footer { border-top: 1px solid var(--border); margin-top: 46px; padding: 24px 0 0; color: var(--text-muted); font-size: .82rem; }
+
+.err { color: #d03b3b; font-size: .87rem; margin-top: 9px; font-weight: 540; }
+
+.spinner {
+  width: 17px; height: 17px; border: 2px solid var(--border-strong);
+  border-top-color: var(--series-1); border-radius: 50%;
+  animation: spin .7s linear infinite; display: inline-block; vertical-align: -3px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+@media print {
+  .topbar, .btnrow, .tabletoggle, .videowrap { display: none !important; }
+  .card, .chartcard, .hero { box-shadow: none; break-inside: avoid; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">Art vs.&nbsp;Artist <span>· research study</span></div>
+    <div class="topbar__spacer"></div>
+    <button class="iconbtn" id="btnResults" type="button">Results</button>
+    <button class="iconbtn" id="btnTheme" type="button" aria-label="Switch colour theme">◐</button>
+  </div>
+  <div class="rail"><div class="rail__fill" id="rail"></div></div>
+</div>
+
+<main class="wrap" id="main">
+
+  <!-- ============================ 1. WELCOME ============================ -->
+  <section class="step" id="step-welcome">
+    <div class="eyebrow">Undergraduate research · University of the People</div>
+    <h1>Can you separate the art from the artist?</h1>
+    <p class="lede">Almost every month, someone who made something you love turns out to have done something you can't ignore. This study asks a narrower, testable version of that question: <strong>when you know what a creator did, does the show itself actually feel different?</strong></p>
+
+    <p>Psychologists have already shown this effect for paintings. Nobody has tested it for television, where a show is made by hundreds of people and a good story pulls you in. That's the gap this study is trying to close — and it needs your ratings to do it.</p>
+
+    <div class="card" style="margin-top:26px">
+      <h3>What you'll actually do</h3>
+      <ul class="clean">
+        <li>Answer three quick questions about yourself — no name, no email, nothing identifying.</li>
+        <li>Watch <strong>three short clips</strong> from real television shows, roughly 1–4 minutes each.</li>
+        <li>Rate each one on five sliders and say, in your own words, what you think.</li>
+        <li>See the <strong>live results dashboard</strong> — everyone's answers so far, updated the moment you submit.</li>
+      </ul>
+      <p class="small muted" style="margin-bottom:0">About 7–10 minutes. Best with sound on.</p>
+    </div>
+
+    <div class="notice">
+      <strong>One thing you should know now:</strong> participants are randomly split into two groups that read slightly different background information before each clip. You'll be told exactly which group you were in, and why, on the final page. Nothing you read here is fabricated — every factual claim is sourced and linked.
+    </div>
+
+    <h3 style="margin-top:34px">Your privacy</h3>
+    <ul class="clean small">
+      <li><strong>No personal data is collected.</strong> No name, email, IP address, login, or tracking cookie.</li>
+      <li>You may enter a made-up nickname if you'd like to spot your own row later. Leave it blank if you prefer — it's optional, and you should not use your real name.</li>
+      <li>Age is recorded as a broad band and location as a world region, so that no combination of answers can identify you.</li>
+      <li>Your answers are stored in a single spreadsheet owned by the student researcher and used only for this coursework.</li>
+      <li>You can stop at any point by closing the tab, and nothing is saved unless you press submit at the end.</li>
+    </ul>
+
+    <div class="notice notice--warn">
+      <strong>Content note.</strong> The background information in this study describes real allegations of workplace abuse, sexual harassment, harassment of minors, and racism. It is written factually and without graphic detail, but if that's not something you want to read today, please don't take part.
+    </div>
+
+    <p class="small muted">By pressing the button below you confirm you are 18 or over, that you're taking part voluntarily, and that you agree to your anonymous answers being used in this student research project.</p>
+
+    <div class="btnrow">
+      <button class="btn" id="btnConsent" type="button">I understand — let's begin</button>
+      <button class="btn btn--ghost" id="btnSkipToResults" type="button">Just show me the results</button>
+    </div>
+  </section>
+
+  <!-- ========================== 2. ABOUT YOU ============================ -->
+  <section class="step" id="step-about" hidden>
+    <div class="eyebrow">Step 1 of 3</div>
+    <h1>A little about you</h1>
+    <p class="lede">Four questions, none of them identifying. These let the study check whether different kinds of viewer respond differently.</p>
+
+    <div class="card">
+      <div class="field">
+        <label for="nickname">Nickname <span class="muted" style="font-weight:400">(optional)</span></label>
+        <p class="hint">Anything you like — <em>not</em> your real name. It's only so you can find your own response in the results.</p>
+        <input type="text" id="nickname" maxlength="24" autocomplete="off" spellcheck="false" placeholder="e.g. purplemoose">
+      </div>
+
+      <div class="field">
+        <span class="qlabel" id="lbl-age">Your age</span>
+        <div class="chiprow" role="radiogroup" aria-labelledby="lbl-age" id="ageChips"></div>
+      </div>
+
+      <div class="field">
+        <span class="qlabel" id="lbl-region">Where in the world are you?</span>
+        <div class="chiprow" role="radiogroup" aria-labelledby="lbl-region" id="regionChips"></div>
+      </div>
+
+      <div class="field" style="margin-bottom:0">
+        <span class="qlabel" id="lbl-freq">How often do you watch television or streaming series?</span>
+        <div class="chiprow" role="radiogroup" aria-labelledby="lbl-freq" id="freqChips"></div>
+      </div>
+    </div>
+
+    <p class="err" id="aboutErr" hidden>Please answer the three questions above before continuing.</p>
+
+    <div class="btnrow">
+      <button class="btn" id="btnAbout" type="button">Continue</button>
+    </div>
+  </section>
+
+  <!-- ============================ 3. CLIPS ============================= -->
+  <section class="step" id="step-clip" hidden>
+    <div class="eyebrow" id="clipEyebrow">Step 2 of 3 · Clip 1 of 3</div>
+    <div class="showhead">
+      <h1 id="clipShow">Show</h1>
+    </div>
+    <p class="muted small" id="clipMeta" style="margin-top:-4px"></p>
+
+    <div class="brief">
+      <div class="brief__label">Background</div>
+      <p id="clipBrief"></p>
+      <p class="srcs" id="clipSrcs"></p>
+    </div>
+
+    <div class="videowrap"><iframe id="clipFrame" title="Television clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+    <div class="videometa">
+      <span id="clipCredit"></span>
+      <a id="clipDirect" href="#" target="_blank" rel="noopener">Trouble playing? Open on YouTube ↗</a>
+    </div>
+
+    <div class="card">
+      <p class="small muted" style="margin-top:0">Please watch the whole clip before answering. There are no right answers — your honest reaction is the data.</p>
+      <div id="clipQuestions"></div>
+
+      <div class="qblock">
+        <span class="qlabel" id="lbl-seen">Had you seen this show before today?</span>
+        <div class="chiprow" role="radiogroup" aria-labelledby="lbl-seen" id="seenChips"></div>
+      </div>
+
+      <div class="qblock">
+        <span class="qlabel" id="lbl-knew">Before today, did you already know about anything controversial involving this show's creator?</span>
+        <div class="chiprow" role="radiogroup" aria-labelledby="lbl-knew" id="knewChips"></div>
+      </div>
+    </div>
+
+    <p class="err" id="clipErr" hidden>Please answer every question on this page before continuing.</p>
+
+    <div class="btnrow">
+      <button class="btn" id="btnClip" type="button">Continue</button>
+    </div>
+  </section>
+
+  <!-- ========================== 4. OPEN QUESTION ======================= -->
+  <section class="step" id="step-open" hidden>
+    <div class="eyebrow">Step 3 of 3</div>
+    <h1>In your own words</h1>
+    <p class="lede">This is the part the numbers can't capture, and it's the most useful thing you can give the study. Please write a few sentences.</p>
+
+    <div class="card">
+      <div class="field">
+        <label for="openText">When you find out that the person behind a show did something wrong, does it change how you watch it? Why, or why not?</label>
+        <p class="hint">Anything goes — a personal example, a principle you hold, a show you gave up, or one you kept watching anyway. Two or three sentences is plenty. Please don't include anything that would identify you or anyone else.</p>
+        <textarea id="openText" maxlength="1800" placeholder="Write as much or as little as you like…"></textarea>
+        <p class="tiny muted" id="charCount">0 / 1800</p>
+      </div>
+
+      <div class="field" style="margin-bottom:0">
+        <span class="qlabel" id="lbl-share">May the study quote your answer anonymously in the public results?</span>
+        <div class="chiprow" role="radiogroup" aria-labelledby="lbl-share" id="shareChips"></div>
+      </div>
+    </div>
+
+    <p class="err" id="openErr" hidden>Please write a short answer and choose whether it may be quoted.</p>
+
+    <div class="btnrow">
+      <button class="btn" id="btnSubmit" type="button">Submit and see the results</button>
+      <span id="submitState" class="small muted"></span>
+    </div>
+  </section>
+
+  <!-- ============================ 5. DEBRIEF ========================== -->
+  <section class="step" id="step-debrief" hidden>
+    <div class="eyebrow">Thank you</div>
+    <h1>Here's what was actually being tested</h1>
+    <div id="debriefBody"></div>
+    <div class="btnrow">
+      <button class="btn" id="btnToDash" type="button">See the live results →</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================ 6. DASHBOARD =========================== -->
+<div class="wrap wrap--wide" id="dashWrap" hidden>
+  <section class="step" id="step-dash">
+    <div class="eyebrow">Live results</div>
+    <h1>What everyone said</h1>
+    <p class="lede" id="dashLede">Every response submitted so far, updated in real time.</p>
+    <div id="dashBody"></div>
+    <div class="btnrow">
+      <button class="btn btn--ghost" id="btnRefresh" type="button">Refresh</button>
+      <button class="btn btn--ghost" id="btnCsv" type="button">Download summary (CSV)</button>
+      <button class="btn btn--ghost" id="btnHome" type="button">Back to the study</button>
+    </div>
+    <div class="footer" id="dashFooter"></div>
+  </section>
+</div>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================================
+   Art vs. Artist — stimulus set
+   ----------------------------------------------------------------------------
+   Eight television cases. Each has TWO background texts of closely matched
+   length, so that reading time is not a confound between conditions:
+
+     neutral  -> CONTROL condition. Production facts only, no moral valence.
+     informed -> TREATMENT condition. Documented controversy, neutrally worded.
+
+   WORDING RULES followed throughout (see README):
+     * Allegations are attributed and hedged ("X alleged", "reported that").
+     * Denials, apologies and admissions are always reported alongside.
+     * Nothing unproven is stated as established fact.
+     * No characterisation ("racist", "abuser") is used in the site's own voice;
+       where such a word appears it is quoted and attributed.
+   Every clip is hosted on an official rights-holder channel.
+   ========================================================================== */
+
+const CASES = [
+  {
+    id: 'victorious',
+    show: 'Victorious',
+    creator: 'Dan Schneider',
+    role: 'Creator and executive producer',
+    network: 'Nickelodeon (2010–2013)',
+    category: 'Alleged workplace misconduct',
+    video: 'c6LWdF2IUF4',
+    clipTitle: 'Victorious | Prom Wrecker',
+    channel: 'Nickelodeon UK',
+
+    neutral: `Victorious ran on Nickelodeon for four seasons between 2010 and 2013 and was created by Dan Schneider, who also developed Drake & Josh, iCarly and Zoey 101. The series follows Tori Vega, a teenager who unexpectedly wins a place at a performing-arts high school in Los Angeles. It was shot multi-camera on a Burbank soundstage and combined sitcom storylines with original songs performed by the cast. During its run it was among the network's highest-rated live-action series, and its soundtrack albums charted in the United States. The show has remained widely available on streaming services since it ended.`,
+
+    informed: `Victorious ran on Nickelodeon between 2010 and 2013 and was created by Dan Schneider. In 2013 two former writers sued, alleging he made sexually explicit jokes in the writers' room, asked staff for massages, and made derogatory remarks about women writers; the case settled out of court with no admission of liability. Schneider left Nickelodeon in 2018 after an internal investigation reportedly found he had been verbally abusive to staff. In 2024 he apologised on video for the writers'-room jokes and the massage requests. He has consistently denied any sexual misconduct involving minors, and has sued the makers of a 2024 documentary for defamation.`,
+
+    sources: [
+      { label: 'BBC News — Schneider apologises (2024)', url: 'https://www.bbc.com/news/world-us-canada-68616476' },
+      { label: 'TIME — defamation lawsuit filed (2024)', url: 'https://time.com/6973495/dan-schneider-quiet-on-set-defamation-lawsuit/' }
+    ]
+  },
+
+  {
+    id: 'buffy',
+    show: 'Buffy the Vampire Slayer',
+    creator: 'Joss Whedon',
+    role: 'Creator and showrunner',
+    network: 'The WB / UPN (1997–2003)',
+    category: 'Alleged workplace abuse',
+    video: 'MIoSOiuwhfQ',
+    clipTitle: 'Buffy the Vampire Slayer — S02E14 "Innocence"',
+    channel: 'Buffy the Vampire Slayer (official)',
+
+    neutral: `Buffy the Vampire Slayer ran for seven seasons between 1997 and 2003, first on The WB and later on UPN, and was created by Joss Whedon. It follows Buffy Summers, a California teenager who inherits the role of a supernatural protector while trying to finish high school. The series is frequently studied in film and media courses for its serialised structure and its use of genre metaphor, and one episode was performed almost entirely without dialogue while another was staged as a musical. It has been in continuous syndication and streaming release since it ended, and spawned the spin-off series Angel.`,
+
+    informed: `Buffy the Vampire Slayer ran from 1997 to 2003 and was created by Joss Whedon. In February 2021 the actor Charisma Carpenter alleged that Whedon had "a history of being casually cruel", said he had commented on her body while she was pregnant, and said he wrote her out of the spin-off after she gave birth; several castmates publicly supported her account. The actor Ray Fisher had earlier described Whedon's conduct on a separate production as "abusive" and "unprofessional". In a 2022 interview Whedon denied the central allegations while acknowledging he had not been "mannerly" on set. No lawsuits or charges followed.`,
+
+    sources: [
+      { label: 'Salon — Charisma Carpenter\'s allegations (2021)', url: 'https://www.salon.com/2021/02/10/buffy-charisma-carpenter-joss-whedon-abuse/' },
+      { label: 'NPR — Whedon responds (2022)', url: 'https://www.npr.org/2022/01/18/1073881791/joss-whedon-was-once-hailed-as-a-feminist-then-came-the-stories-about-his-behavi' }
+    ]
+  },
+
+  {
+    id: 'loudhouse',
+    show: 'The Loud House',
+    creator: 'Chris Savino',
+    role: 'Creator and showrunner',
+    network: 'Nickelodeon (2016– )',
+    category: 'Alleged sexual harassment',
+    video: 'Z_aV_PJ5Z7s',
+    clipTitle: 'The Loud House | Slice of Life',
+    channel: 'The Loud House (official)',
+
+    neutral: `The Loud House premiered on Nickelodeon in 2016 and was created by Chris Savino, an animator who had previously worked on Dexter's Laboratory and The Powerpuff Girls. The series follows Lincoln Loud, the middle child and only boy in a family of eleven siblings, as he narrates his attempts to survive a chaotic household. It is drawn in a flat, comic-strip-influenced style and was one of the first Nickelodeon series to feature a married same-sex couple. Within months of launching it became the network's highest-rated animated series, and it has since produced films and spin-offs.`,
+
+    informed: `The Loud House premiered on Nickelodeon in 2016 and was created by Chris Savino. In October 2017 the trade outlet Cartoon Brew reported that around a dozen women, most of them former colleagues, had alleged sexual harassment, inappropriate behaviour and threats of professional retaliation. Nickelodeon suspended Savino, and after an internal investigation he was dismissed. In an open letter Savino apologised without disputing the substance of the accounts, writing that he was "deeply sorry" and "ashamed" and that his actions had "created an uncomfortable environment". No lawsuit or criminal charge followed. The series continued in production without him.`,
+
+    sources: [
+      { label: 'Cartoon Brew — Savino dismissed (2017)', url: 'https://www.cartoonbrew.com/tv/loud-house-creator-chris-savino-fired-nickelodeon-sexual-harassment-allegations-154121.html' },
+      { label: 'CBS News — Savino\'s public apology (2017)', url: 'https://www.cbsnews.com/news/chris-savino-ex-nickelodeon-producer-sexual-harassment-allegations/' }
+    ]
+  },
+
+  {
+    id: 'community',
+    show: 'Community',
+    creator: 'Dan Harmon',
+    role: 'Creator and showrunner',
+    network: 'NBC / Yahoo! Screen (2009–2015)',
+    category: 'Acknowledged sexual harassment',
+    video: 'XfEH7oLimn0',
+    clipTitle: 'Troy and Abed and Annie in the Morning | Community',
+    channel: 'Community (official)',
+
+    neutral: `Community ran for six seasons between 2009 and 2015, first on NBC and finally on Yahoo! Screen, and was created by Dan Harmon. It follows a study group at Greendale Community College, a fictional and poorly run institution in Colorado. The series is known for episodes that parody a specific genre or format, including several built around campus-wide paintball games, a stop-motion animated Christmas episode, and an episode presented as a documentary. It was nominated for Emmy Awards for its writing and animation, and has retained an unusually active fan following since its conclusion.`,
+
+    informed: `Community ran from 2009 to 2015 and was created by Dan Harmon. In January 2018 the writer Megan Ganz said publicly that Harmon had harassed her while he was her showrunner. Harmon then corroborated her account in detail on his podcast, saying "I was attracted to a writer I had power over because I was a showrunner" and describing how he had treated her badly after she did not reciprocate. He apologised without qualification. Ganz publicly accepted the apology, describing it as "a masterclass in How to Apologize". Harmon was not dismissed, and no lawsuit or criminal charge followed.`,
+
+    sources: [
+      { label: 'TIME — Harmon\'s account and apology (2018)', url: 'https://time.com/5100019/dan-harmon-megan-ganz-sexual-harassment-apology/' },
+      { label: 'Slate — the podcast monologue in full (2018)', url: 'https://slate.com/arts/2018/01/dan-harmon-apologizes-to-community-writer-megan-ganz-on-harmontown.html' }
+    ]
+  },
+
+  {
+    id: 'roseanne',
+    show: 'Roseanne',
+    creator: 'Roseanne Barr',
+    role: 'Co-creator, executive producer and star',
+    network: 'ABC (1988–1997; revival 2018)',
+    category: 'Public statement widely reported as racist',
+    video: 'WjvHl-ZzOns',
+    clipTitle: 'The Hillbilly Day Spa — Roseanne',
+    channel: 'ABC (official)',
+
+    neutral: `Roseanne originally ran on ABC from 1988 to 1997 and was revived for a further season in 2018. Built around the stand-up persona of Roseanne Barr, who co-created the series and starred in it, the show follows the Conners, a working-class family in the fictional town of Lanford, Illinois. It was among the first American sitcoms to centre a household struggling with unstable employment and money, and its writers' room launched several later showrunners. The 2018 revival premiere drew more than eighteen million viewers, one of the largest sitcom audiences of that decade.`,
+
+    informed: `Roseanne ran on ABC from 1988 to 1997 and returned for a revival in 2018. On 28 May 2018 Barr posted a message on Twitter about Valerie Jarrett, a Black former adviser to President Obama, which read: "muslim brotherhood & planet of the apes had a baby=vj". ABC cancelled the revival within about a day; its entertainment president called the post "abhorrent, repugnant and inconsistent with our values". Barr deleted the message and apologised, saying she was "truly sorry"; she later said she had not known Jarrett was Black. A spin-off, The Conners, continued without her.`,
+
+    sources: [
+      { label: 'CBS News — ABC cancels the revival (2018)', url: 'https://www.cbsnews.com/news/roseanne-canceled-today-after-roseanne-barr-tweet-valerie-jarrett/' },
+      { label: 'CNBC — the spin-off proceeds without Barr (2018)', url: 'https://www.cnbc.com/2018/10/17/roseanne-barr-is-unhappy-about-her-characters-death-in-the-conners.html' }
+    ]
+  },
+
+  {
+    id: 'renstimpy',
+    show: 'The Ren & Stimpy Show',
+    creator: 'John Kricfalusi',
+    role: 'Creator',
+    network: 'Nickelodeon (1991–1996)',
+    category: 'Alleged grooming of minors',
+    video: 'GvDCgR_9-fE',
+    clipTitle: 'Space Madness | The Ren & Stimpy Show',
+    channel: 'Comedy Central UK (official)',
+
+    neutral: `The Ren & Stimpy Show premiered on Nickelodeon in 1991 and was created by the animator John Kricfalusi through his studio Spümcø. It follows a highly strung chihuahua and a placid cat through loosely structured cartoon shorts drawn in an exaggerated, rubbery style that deliberately recalled mid-century theatrical animation. The series is widely credited with helping establish the creator-driven model that shaped later animated television, and its visual approach influenced a generation of animators. Kricfalusi was removed from the production in 1992 following disputes over deadlines and content, and the show continued without him until 1996.`,
+
+    informed: `The Ren & Stimpy Show premiered on Nickelodeon in 1991 and was created by John Kricfalusi. In March 2018 two women told BuzzFeed News that he had pursued them when they were teenagers: Robyn Byrd said he began corresponding with her when she was 13 and that she later lived with him, and Katie Rice said he began contacting her at around 14. Through his attorney, Kricfalusi acknowledged that "for a brief time, 25 years ago, he had a 16-year-old girlfriend", attributed his conduct to then-undiagnosed mental illness, and denied the other allegations. No criminal charges were filed.`,
+
+    sources: [
+      { label: 'TIME — the BuzzFeed News allegations (2018)', url: 'https://time.com/5221876/sexual-abuse-accusations-john-kricfalusi/' },
+      { label: 'Newsweek — excluded from the 2020 revival', url: 'https://www.newsweek.com/john-kricfalusi-involved-new-ren-stimpy-after-abuse-allegations-1523097' }
+    ]
+  },
+
+  {
+    id: 'ellen',
+    show: 'The Ellen DeGeneres Show',
+    creator: 'Ellen DeGeneres',
+    role: 'Host and executive producer',
+    network: 'Syndicated / Warner Bros. (2003–2022)',
+    category: 'Alleged workplace culture and racism (vicarious responsibility)',
+    video: 'xz67L6OP1ss',
+    clipTitle: 'Memorable Monologue: Smile!',
+    channel: 'TheEllenShow (official)',
+
+    neutral: `The Ellen DeGeneres Show was a syndicated daytime talk programme that ran for nineteen seasons between 2003 and 2022, hosted and executive-produced by Ellen DeGeneres. Each episode combined a stand-up monologue, celebrity interviews, audience games and filmed segments, and the format leaned heavily on the host's improvised interaction with the studio audience. The programme won more than sixty Daytime Emmy Awards across its run and its clips became among the most-viewed talk-show material on video platforms. It concluded in 2022, and the host has since returned intermittently to stand-up performance.`,
+
+    informed: `The Ellen DeGeneres Show ran from 2003 to 2022, hosted and executive-produced by Ellen DeGeneres. In July 2020 BuzzFeed News published accounts from current and former employees alleging a hostile workplace, including racist remarks directed at Black staff and intimidation. A second report carried allegations of sexual harassment against three senior producers — not against DeGeneres — two of whom denied them; all three left the programme. DeGeneres was not accused of harassment. She apologised to staff and on air, saying "I learned that things happened here that never should have happened", and said she takes responsibility for what happens under her name.`,
+
+    sources: [
+      { label: 'NPR — the second round of allegations (2020)', url: 'https://www.npr.org/2020/07/31/897646026/ellen-producers-face-another-round-of-allegations-including-sexual-misconduct' },
+      { label: 'BBC News — three producers depart (2020)', url: 'https://www.bbc.com/news/world-us-canada-53815705' }
+    ]
+  },
+
+  {
+    id: 'arrow',
+    show: 'Arrow',
+    creator: 'Andrew Kreisberg',
+    role: 'Co-creator and executive producer',
+    network: 'The CW (2012–2020)',
+    category: 'Alleged sexual harassment (denied)',
+    video: 'OUaDTakFH0U',
+    clipTitle: 'Arrow — Season 1: "You Have Failed This City"',
+    channel: 'DC (official)',
+
+    neutral: `Arrow ran on The CW for eight seasons between 2012 and 2020 and was co-created by Greg Berlanti, Marc Guggenheim and Andrew Kreisberg. It follows Oliver Queen, a wealthy heir presumed dead after a shipwreck, who returns to his city and begins operating as a masked archer. The series established the shared continuity later known as the "Arrowverse", which grew to include The Flash, Supergirl and Legends of Tomorrow, with regular crossover events between them. It was among The CW's most-watched dramas and helped define the network's programming strategy for most of a decade.`,
+
+    informed: `Arrow ran on The CW from 2012 to 2020 and was co-created by Andrew Kreisberg among others. In November 2017 Variety reported allegations from nineteen people — fifteen women and four men — who had worked on Kreisberg's series, describing unwanted touching, repeated requests for massages and frequent sexualised comments about colleagues. Warner Bros. Television suspended him and, after an investigation, terminated his employment. Kreisberg denied the allegations, saying he had commented on appearance but that "they were not sexualized", and that he had never mentored anyone "in what I believe to be an unwanted way". No charge or lawsuit followed.`,
+
+    sources: [
+      { label: 'BuzzFeed News — Kreisberg dismissed (2017)', url: 'https://www.buzzfeednews.com/article/coralewis/supergirl-producer-suspended' },
+      { label: 'TV Insider — investigation and termination (2017)', url: 'https://www.tvinsider.com/652066/arrowverse-executive-producer-andrew-kreisberg-fired-sexual-misconduct-investigation/' }
+    ]
+  }
+];
+
+/* The five 1–7 rating items. Every point is labelled, following Jebb, Ng & Tay
+   (2021), who report that fully-labelled scales outperform endpoint-only ones. */
+const ITEMS = [
+  {
+    key: 'enjoy',
+    question: 'How much did you enjoy watching this clip?',
+    low: 'Not at all', high: 'Extremely',
+    labels: ['Not at all', 'Very slightly', 'Slightly', 'Moderately', 'Quite a lot', 'Very much', 'Extremely'],
+    primary: true
+  },
+  {
+    key: 'emotion',
+    question: 'How strong was your emotional response to the clip?',
+    low: 'None at all', high: 'Very strong',
+    labels: ['None at all', 'Very weak', 'Weak', 'Moderate', 'Fairly strong', 'Strong', 'Very strong']
+  },
+  {
+    key: 'craft',
+    question: 'How well made is this clip? Think about the writing, performances and production.',
+    low: 'Very poorly', high: 'Extremely well',
+    labels: ['Very poorly', 'Poorly', 'Somewhat poorly', 'Adequately', 'Somewhat well', 'Very well', 'Extremely well']
+  },
+  {
+    key: 'discomfort',
+    question: 'How uncomfortable did you feel while watching?',
+    low: 'Not at all', high: 'Extremely',
+    labels: ['Not at all', 'Very slightly', 'Slightly', 'Moderately', 'Quite', 'Very', 'Extremely']
+  },
+  {
+    key: 'keep',
+    question: 'How likely would you be to watch more of this show?',
+    low: 'Very unlikely', high: 'Very likely',
+    labels: ['Very unlikely', 'Unlikely', 'Somewhat unlikely', 'Undecided', 'Somewhat likely', 'Likely', 'Very likely']
+  }
+];
+
+const MEASURE_LABELS = {
+  enjoy: 'Enjoyment',
+  emotion: 'Emotional response',
+  craft: 'Craft quality',
+  discomfort: 'Moral discomfort',
+  keep: 'Would keep watching'
+};
+
+const AGE_BANDS = ['Under 18', '18–24', '25–34', '35–44', '45–54', '55–64', '65 or over', 'Prefer not to say'];
+
+const REGIONS = [
+  'Africa', 'Asia — Central & South', 'Asia — East & Southeast', 'Europe',
+  'Latin America & Caribbean', 'Middle East & North Africa',
+  'North America', 'Oceania', 'Prefer not to say'
+];
+
+const WATCH_FREQ = [
+  'Almost every day', 'A few times a week', 'A few times a month',
+  'Rarely', 'Almost never'
+];
+
+/* ==========================================================================
+   Art vs. Artist — application logic
+   No frameworks, no build step, no external requests except the YouTube
+   embeds and (once configured) the Google Apps Script endpoint.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   CONFIGURATION
+   Paste the Apps Script web-app URL between the quotes after deploying.
+   While it is empty the site runs in LOCAL MODE: everything works, but
+   responses are kept in this browser only.
+   -------------------------------------------------------------------------- */
+const CONFIG = {
+  API_URL: 'https://script.google.com/macros/s/AKfycbyz2vn74lUslBqoZKCCOkHHc-ztMNjuIttNnIYsVQx-lho8MUSz4HElDGIppumwrVV7/exec',
+  CLIPS_PER_PARTICIPANT: 3,
+  STUDY_TITLE: 'Art vs. Artist',
+  RESEARCHER: 'Adelya Medelbekova · ENGL 1102, University of the People'
+};
+
+const LS_KEY = 'ava_local_v1';
+const LS_DONE = 'ava_done_v1';
+const LS_THEME = 'ava_theme';
+
+/* ---------------------------------------------------------------- state -- */
+const S = {
+  pid: null,
+  condition: null,
+  startedAt: null,
+  about: { nickname: '', age: '', region: '', freq: '' },
+  clips: [],
+  idx: 0,
+  ratings: [],
+  openText: '',
+  share: '',
+  agg: null
+};
+
+/* ------------------------------------------------------------- helpers -- */
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, c =>
+  ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+function uid() {
+  const a = new Uint8Array(9);
+  crypto.getRandomValues(a);
+  return Array.from(a, b => b.toString(36).padStart(2, '0')).join('').slice(0, 12);
+}
+function coin() {
+  const a = new Uint32Array(1);
+  crypto.getRandomValues(a);
+  return a[0] / 4294967296;
+}
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(coin() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+const fmt = (n, d = 2) => (n == null || isNaN(n)) ? '—' : Number(n).toFixed(d);
+
+function chips(host, values, name, onPick) {
+  host.innerHTML = values.map((v, i) => `
+    <label class="chip"><input type="radio" name="${name}" value="${esc(v)}"
+      ${i === 0 ? '' : ''}><span>${esc(v)}</span></label>`).join('');
+  host.querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('change', () => onPick && onPick(inp.value));
+  });
+}
+const chipVal = (name) => {
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : '';
+};
+
+/* ------------------------------------------------------------ navigation - */
+const STEPS = ['welcome', 'about', 'clip', 'open', 'debrief'];
+function show(step) {
+  STEPS.forEach(s => { const el = $('step-' + s); if (el) el.hidden = (s !== step); });
+  $('dashWrap').hidden = true;
+  $('main').hidden = false;
+  window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+  const pct = { welcome: 0, about: 12, clip: 22, open: 82, debrief: 94 }[step] || 0;
+  const extra = step === 'clip' ? (S.idx / CONFIG.CLIPS_PER_PARTICIPANT) * 58 : 0;
+  $('rail').style.width = (pct + extra) + '%';
+}
+function showDash() {
+  STEPS.forEach(s => { const el = $('step-' + s); if (el) el.hidden = true; });
+  $('main').hidden = true;
+  $('dashWrap').hidden = false;
+  $('rail').style.width = '100%';
+  window.scrollTo({ top: 0 });
+}
+
+/* =============================== THEME =================================== */
+(function theme() {
+  const saved = localStorage.getItem(LS_THEME);
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  $('btnTheme').addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const isDark = cur ? cur === 'dark'
+      : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const next = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem(LS_THEME, next);
+    if (!$('dashWrap').hidden && S.agg) renderDash(S.agg);
+  });
+})();
+
+/* ============================== STEP 1 =================================== */
+$('btnConsent').addEventListener('click', () => {
+  S.pid = uid();
+  S.condition = coin() < 0.5 ? 'informed' : 'control';
+  S.startedAt = Date.now();
+  S.clips = shuffle(CASES).slice(0, CONFIG.CLIPS_PER_PARTICIPANT);
+  S.idx = 0;
+  S.ratings = [];
+  buildAbout();
+  show('about');
+});
+$('btnSkipToResults').addEventListener('click', () => loadDash());
+$('btnResults').addEventListener('click', () => loadDash());
+$('btnHome').addEventListener('click', () => show('welcome'));
+
+/* ============================== STEP 2 =================================== */
+function buildAbout() {
+  chips($('ageChips'), AGE_BANDS, 'age');
+  chips($('regionChips'), REGIONS, 'region');
+  chips($('freqChips'), WATCH_FREQ, 'freq');
+}
+$('btnAbout').addEventListener('click', () => {
+  const age = chipVal('age'), region = chipVal('region'), freq = chipVal('freq');
+  if (!age || !region || !freq) { $('aboutErr').hidden = false; return; }
+  $('aboutErr').hidden = true;
+  S.about = { nickname: $('nickname').value.trim().slice(0, 24), age, region, freq };
+  renderClip();
+  show('clip');
+});
+
+/* ============================== STEP 3 =================================== */
+function renderClip() {
+  const c = S.clips[S.idx];
+  const text = S.condition === 'informed' ? c.informed : c.neutral;
+
+  $('clipEyebrow').textContent =
+    `Step 2 of 3 · Clip ${S.idx + 1} of ${CONFIG.CLIPS_PER_PARTICIPANT}`;
+  $('clipShow').textContent = c.show;
+  $('clipMeta').textContent = `${c.network} · created by ${c.creator}`;
+  $('clipBrief').textContent = text;
+
+  $('clipSrcs').innerHTML = S.condition === 'informed'
+    ? 'Sources: ' + c.sources.map(s =>
+        `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ')
+    : '';
+
+  $('clipFrame').src =
+    `https://www.youtube-nocookie.com/embed/${c.video}?rel=0&modestbranding=1`;
+  $('clipCredit').textContent = `“${c.clipTitle}” — ${c.channel}`;
+  $('clipDirect').href = `https://www.youtube.com/watch?v=${c.video}`;
+
+  $('clipQuestions').innerHTML = ITEMS.map(it => `
+    <div class="qblock">
+      <span class="qlabel" id="lbl-${it.key}">${esc(it.question)}</span>
+      <div class="scale">
+        <div class="scale__opts" role="radiogroup" aria-labelledby="lbl-${it.key}">
+          ${it.labels.map((lab, i) => `
+            <label class="scale__opt">
+              <input type="radio" name="r_${it.key}" value="${i + 1}">
+              <span class="scale__num">${i + 1}</span>
+              <span class="scale__txt">${esc(lab)}</span>
+            </label>`).join('')}
+        </div>
+        <div class="scale__ends"><span>1 · ${esc(it.low)}</span><span>${esc(it.high)} · 7</span></div>
+      </div>
+    </div>`).join('');
+
+  chips($('seenChips'), ['Yes, I know it well', 'Yes, a little', 'No, never', 'Not sure'], 'seen');
+  chips($('knewChips'), ['Yes, I knew about it', 'I had a vague sense', 'No, this is new to me'], 'knew');
+
+  $('clipErr').hidden = true;
+  window.scrollTo({ top: 0 });
+}
+
+$('btnClip').addEventListener('click', () => {
+  const row = { caseId: S.clips[S.idx].id, order: S.idx + 1 };
+  let ok = true;
+  ITEMS.forEach(it => {
+    const v = chipVal('r_' + it.key);
+    if (!v) ok = false; else row[it.key] = Number(v);
+  });
+  const seen = chipVal('seen'), knew = chipVal('knew');
+  if (!seen || !knew) ok = false;
+  if (!ok) { $('clipErr').hidden = false; return; }
+
+  row.seen = seen;
+  row.knew = knew;
+  S.ratings.push(row);
+  S.idx++;
+
+  $('clipFrame').src = 'about:blank';
+
+  if (S.idx < S.clips.length) { renderClip(); show('clip'); }
+  else { buildOpen(); show('open'); }
+});
+
+/* ============================== STEP 4 =================================== */
+function buildOpen() {
+  chips($('shareChips'), ['Yes, quote me', 'No, keep it private'], 'share');
+  const ta = $('openText');
+  ta.addEventListener('input', () => {
+    $('charCount').textContent = `${ta.value.length} / 1800`;
+  });
+}
+
+$('btnSubmit').addEventListener('click', async () => {
+  const txt = $('openText').value.trim();
+  const share = chipVal('share');
+  if (txt.length < 15 || !share) { $('openErr').hidden = false; return; }
+  $('openErr').hidden = true;
+  S.openText = txt;
+  S.share = share;
+
+  const btn = $('btnSubmit');
+  btn.disabled = true;
+  $('submitState').innerHTML = '<span class="spinner"></span> Saving your answers…';
+
+  const payload = {
+    pid: S.pid,
+    condition: S.condition,
+    nickname: S.about.nickname,
+    age: S.about.age,
+    region: S.about.region,
+    freq: S.about.freq,
+    openText: S.openText,
+    share: S.share === 'Yes, quote me' ? 'yes' : 'no',
+    durationSec: Math.round((Date.now() - S.startedAt) / 1000),
+    ratings: S.ratings
+  };
+
+  // Never trap a participant behind a spinner: if the network is slow, move on
+  // and let the request finish in the background.
+  try {
+    await giveUpAfter(submit(payload), 12000, { ok: true, slow: true });
+  } catch (e) { /* handled inside submit */ }
+
+  localStorage.setItem(LS_DONE, '1');
+  btn.disabled = false;
+  $('submitState').textContent = '';
+  renderDebrief();
+  show('debrief');
+});
+
+/* ============================== STEP 5 =================================== */
+function renderDebrief() {
+  const informed = S.condition === 'informed';
+  const shown = S.clips.map(c => c.show).join(', ');
+
+  $('debriefBody').innerHTML = `
+    <p class="lede">You were in the <strong>${informed ? 'informed' : 'control'} group</strong>.</p>
+
+    <div class="card">
+      <p>${informed
+        ? `Before each clip you read a short, factual account of a documented controversy involving that show's creator. Every claim in those texts is sourced, hedged where the allegation is contested, and reports the person's response — denial, apology or admission — alongside the accusation.`
+        : `Before each clip you read neutral production background: when the show aired, who made it, how it was filmed. No controversy was mentioned to you at all.`}</p>
+      <p>The other half of participants saw the opposite. Both texts were written to a matched length, so any difference between the groups comes from <em>what</em> was said and not from how long people spent reading. Everything else — the clips, the questions, the order — was identical.</p>
+      <p style="margin-bottom:0">You saw: <strong>${esc(shown)}</strong>.</p>
+    </div>
+
+    <h3 style="margin-top:30px">Why it's built this way</h3>
+    <p>Earlier experiments established that moral information about an artist lowers how much people appreciate their work — but almost all of that evidence comes from <em>paintings</em>: still, silent, made by one identifiable person. Television is none of those things. It moves, it tells a story you get absorbed in, and it is made by hundreds of people, which means blame for one person's conduct is much harder to pin to the object in front of you.</p>
+    <p>So the question isn't only "does knowing hurt enjoyment" — it's <strong>whether a finding proven for paintings survives the jump to the medium people actually argue about</strong>. Your five ratings were designed to pull that apart: enjoyment and emotional response on one side, judgement of craft on the other, and moral discomfort in between. If knowing changes how you <em>feel</em> without changing what you think of the writing, that's a meaningful result.</p>
+
+    ${informed ? `
+    <h3 style="margin-top:30px">The sources you were shown</h3>
+    <p class="small">Every background text you read links to reporting you can check yourself:</p>
+    <ul class="clean small">
+      ${S.clips.map(c => `<li><strong>${esc(c.show)}</strong> — ` +
+        c.sources.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ') +
+        `</li>`).join('')}
+    </ul>` : `
+    <h3 style="margin-top:30px">What the other group read</h3>
+    <p class="small">For transparency, here is the background the informed group saw for the shows you rated. Each is sourced to published reporting.</p>
+    <ul class="clean small">
+      ${S.clips.map(c => `<li><strong>${esc(c.show)}</strong> — ${esc(c.category)}. ` +
+        c.sources.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ') +
+        `</li>`).join('')}
+    </ul>`}
+
+    <div class="notice">
+      Some of this material is upsetting, and reading it can stay with you. If it has, it's worth talking to someone you trust. And if you'd like your response removed from the dataset, the study's contact details are on the results page — quote the nickname you used${S.about.nickname ? ` (<strong>${esc(S.about.nickname)}</strong>)` : ''}.
+    </div>`;
+}
+
+$('btnToDash').addEventListener('click', () => loadDash());
+
+/* ============================= DATA LAYER ================================ */
+function localRows() {
+  try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); } catch (e) { return []; }
+}
+
+/* Stop waiting after `ms`, but let the underlying request carry on — aborting
+   a POST that may already have been written would risk a duplicate on retry. */
+function giveUpAfter(promise, ms, fallback) {
+  return Promise.race([
+    promise,
+    new Promise(resolve => setTimeout(() => resolve(fallback), ms))
+  ]);
+}
+
+async function submit(payload) {
+  payload.ts = new Date().toISOString();
+
+  if (!CONFIG.API_URL) {
+    const rows = localRows();
+    rows.push(payload);
+    localStorage.setItem(LS_KEY, JSON.stringify(rows.slice(-800)));
+    return { ok: true, local: true };
+  }
+
+  // A text/plain body makes this a "simple request", so there is no CORS
+  // preflight against Apps Script.
+  const body = JSON.stringify(payload);
+
+  let res = null;
+  try {
+    // keepalive lets the browser finish the write even if the page moves on
+    res = await fetch(CONFIG.API_URL, { method: 'POST', body, redirect: 'follow', keepalive: true });
+  } catch (networkError) {
+    // The request never completed. Retrying is safe: nothing was written.
+    try {
+      await fetch(CONFIG.API_URL, { method: 'POST', mode: 'no-cors', body });
+      return { ok: true, opaque: true };
+    } catch (e2) {
+      const rows = localRows();
+      rows.push(payload);
+      localStorage.setItem(LS_KEY, JSON.stringify(rows.slice(-800)));
+      return { ok: false, error: String(e2) };
+    }
+  }
+
+  // The request DID complete, so the row is already written. Apps Script
+  // answers a cross-origin POST through a redirect whose body is not always
+  // our JSON — an unreadable reply is not a failure, and must never trigger a
+  // retry, or the participant would be recorded twice.
+  try {
+    return await res.json();
+  } catch (unreadable) {
+    return { ok: true, unreadable: true };
+  }
+}
+
+async function fetchAgg() {
+  if (!CONFIG.API_URL) return computeAgg(localRows());
+  const live = (async () => {
+    const res = await fetch(CONFIG.API_URL + '?action=summary', { redirect: 'follow' });
+    const j = await res.json();
+    if (!j || !j.ok) throw new Error('bad payload');
+    return j;
+  })();
+  try {
+    const j = await giveUpAfter(live, 15000, null);
+    if (j) return j;
+    throw new Error('timed out');
+  } catch (e) {
+    const local = computeAgg(localRows());
+    local.degraded = true;
+    return local;
+  }
+}
+
+/* ------- aggregation (mirrors the Apps Script implementation exactly) ----- */
+function computeAgg(subs) {
+  const conds = ['control', 'informed'];
+  const blank = () => ({ n: 0, sum: 0, sumsq: 0 });
+  const agg = {
+    ok: true,
+    local: !CONFIG.API_URL,
+    updatedAt: new Date().toISOString(),
+    nParticipants: subs.length,
+    nRatings: 0,
+    overall: { control: {}, informed: {} },
+    byCase: [],
+    dist: { control: new Array(7).fill(0), informed: new Array(7).fill(0) },
+    demo: { age: {}, region: {}, freq: {} },
+    knewCount: { control: 0, informed: 0 },
+    knewTotal: { control: 0, informed: 0 },
+    quotes: []
+  };
+
+  const keys = ITEMS.map(i => i.key);
+  conds.forEach(c => keys.forEach(k => agg.overall[c][k] = blank()));
+
+  const caseAcc = {};
+  CASES.forEach(c => {
+    caseAcc[c.id] = { id: c.id, show: c.show, control: blank(), informed: blank() };
+  });
+
+  subs.forEach(p => {
+    const c = p.condition === 'informed' ? 'informed' : 'control';
+    agg.demo.age[p.age] = (agg.demo.age[p.age] || 0) + 1;
+    agg.demo.region[p.region] = (agg.demo.region[p.region] || 0) + 1;
+    agg.demo.freq[p.freq] = (agg.demo.freq[p.freq] || 0) + 1;
+
+    (p.ratings || []).forEach(r => {
+      agg.nRatings++;
+      keys.forEach(k => {
+        const v = Number(r[k]);
+        if (v >= 1 && v <= 7) {
+          const a = agg.overall[c][k];
+          a.n++; a.sum += v; a.sumsq += v * v;
+        }
+      });
+      const e = Number(r.enjoy);
+      if (e >= 1 && e <= 7) {
+        agg.dist[c][e - 1]++;
+        const ca = caseAcc[r.caseId];
+        if (ca) { ca[c].n++; ca[c].sum += e; ca[c].sumsq += e * e; }
+      }
+      agg.knewTotal[c]++;
+      if (r.knew === 'Yes, I knew about it') agg.knewCount[c]++;
+    });
+
+    if (p.share === 'yes' && p.openText && p.openText.length > 20) {
+      agg.quotes.push({
+        condition: c,
+        text: String(p.openText).slice(0, 460),
+        nickname: p.nickname || ''
+      });
+    }
+  });
+
+  const stat = (a) => {
+    if (!a.n) return { n: 0, mean: null, sd: null, se: null };
+    const mean = a.sum / a.n;
+    const varr = a.n > 1 ? Math.max(0, (a.sumsq - a.n * mean * mean) / (a.n - 1)) : 0;
+    const sd = Math.sqrt(varr);
+    return { n: a.n, mean, sd, se: a.n > 1 ? sd / Math.sqrt(a.n) : null };
+  };
+  conds.forEach(c => keys.forEach(k => agg.overall[c][k] = stat(agg.overall[c][k])));
+  agg.byCase = Object.values(caseAcc).map(ca => ({
+    id: ca.id, show: ca.show, control: stat(ca.control), informed: stat(ca.informed)
+  }));
+  agg.quotes = agg.quotes.slice(-24).reverse();
+  return agg;
+}
+
+/* =============================== DASHBOARD =============================== */
+async function loadDash() {
+  showDash();
+  const body = $('dashBody');
+  if (S.agg) {
+    // Refetch: hold the current render at reduced opacity rather than
+    // flashing a skeleton, so nothing jumps around under the reader.
+    body.style.transition = 'opacity .2s ease';
+    body.style.opacity = '0.45';
+  } else {
+    body.innerHTML = '<div class="card"><span class="spinner"></span> Loading results…</div>';
+  }
+  const agg = await fetchAgg();
+  S.agg = agg;
+  renderDash(agg);
+  body.style.opacity = '1';
+}
+$('btnRefresh').addEventListener('click', () => loadDash());
+
+function renderDash(a) {
+  const body = $('dashBody');
+
+  if (!a.nRatings) {
+    body.innerHTML = `
+      <div class="card">
+        <h3>No responses yet</h3>
+        <p>The dashboard fills in as soon as people start taking part. Every chart below is live — mean enjoyment by group, the spread of ratings, how the five measures move against each other, and what people wrote.</p>
+        <p style="margin-bottom:0" class="small muted">${a.local
+          ? 'This browser is running in local mode: responses you submit here are stored on this device only.'
+          : 'Connected to the live response sheet.'}</p>
+      </div>`;
+    $('dashFooter').innerHTML = footerHtml(a);
+    return;
+  }
+
+  const ov = a.overall;
+  const dEnjoy = (ov.control.enjoy.mean != null && ov.informed.enjoy.mean != null)
+    ? ov.informed.enjoy.mean - ov.control.enjoy.mean : null;
+
+  const knewPct = (a.knewTotal.control + a.knewTotal.informed)
+    ? Math.round(100 * (a.knewCount.control + a.knewCount.informed) /
+      (a.knewTotal.control + a.knewTotal.informed)) : 0;
+
+  body.innerHTML = `
+    ${a.degraded ? `<div class="notice notice--warn">Couldn't reach the live response sheet, so this is showing whatever was recorded in this browser. Try refreshing.</div>` : ''}
+
+    <div class="hero">
+      <div class="eyebrow">The headline number</div>
+      <div class="hero__fig">${dEnjoy == null ? '—' : (dEnjoy > 0 ? '+' : '') + fmt(dEnjoy)}</div>
+      <p class="hero__cap">${dEnjoy == null ? 'Not enough data yet.' :
+        `points ${dEnjoy < 0 ? 'lower' : 'higher'} on the 1–7 enjoyment scale for viewers who were told about the creator's conduct, compared with viewers who read only neutral background.`}</p>
+    </div>
+
+    <div class="kpis">
+      ${kpi('Participants', a.nParticipants, 'people who finished')}
+      ${kpi('Clip ratings', a.nRatings, 'individual clips rated')}
+      ${kpi('Informed group', ov.informed.enjoy.n || 0, 'ratings · mean ' + fmt(ov.informed.enjoy.mean))}
+      ${kpi('Control group', ov.control.enjoy.n || 0, 'ratings · mean ' + fmt(ov.control.enjoy.mean))}
+      ${kpi('Already knew', knewPct + '%', 'knew the controversy beforehand')}
+    </div>
+
+    ${legendHtml()}
+
+    <div class="chartcard">
+      <div class="chartcard__head">
+        <h3>Enjoyment by show</h3>
+        <button class="tabletoggle" data-t="t-case">Table</button>
+      </div>
+      <p class="chartcard__sub">Mean enjoyment rating, 1–7. The number at the end of each pair is the gap between the two groups.</p>
+      <div id="c-case"></div>
+      <div id="t-case" hidden></div>
+    </div>
+
+    <div class="chartcard">
+      <div class="chartcard__head">
+        <h3>How the ratings were spread</h3>
+        <button class="tabletoggle" data-t="t-dist">Table</button>
+      </div>
+      <p class="chartcard__sub">Share of enjoyment ratings at each point of the scale, centred on the neutral midpoint (4).</p>
+      <div id="c-dist"></div>
+      <div id="t-dist" hidden></div>
+    </div>
+
+    <div class="chartcard">
+      <div class="chartcard__head">
+        <h3>The five measures</h3>
+        <button class="tabletoggle" data-t="t-meas">Table</button>
+      </div>
+      <p class="chartcard__sub">If knowing changes feeling but not judgement of craft, enjoyment and emotional response move while craft quality stays put.</p>
+      <div id="c-meas"></div>
+      <div id="t-meas" hidden></div>
+    </div>
+
+    ${a.quotes && a.quotes.length ? `
+    <div class="chartcard">
+      <div class="chartcard__head"><h3>In their own words</h3></div>
+      <p class="chartcard__sub">Answers from participants who agreed to be quoted. Most recent first${a.quotes.length > 12 ? `, showing 12 of ${a.quotes.length}` : ''}.</p>
+      <div class="quotes">
+        ${a.quotes.slice(0, 12).map(q => `
+          <div class="quote quote--${q.condition}">
+            ${esc(q.text)}
+            <div class="quote__meta">${q.condition} group${q.nickname ? ' · ' + esc(q.nickname) : ''}</div>
+          </div>`).join('')}
+      </div>
+    </div>` : ''}
+
+    <div class="chartcard">
+      <div class="chartcard__head"><h3>Who took part</h3></div>
+      <p class="chartcard__sub">Self-reported, in broad bands so that nobody can be identified.</p>
+      ${demoTable(a.demo)}
+    </div>`;
+
+  drawByCase($('c-case'), a);
+  drawDist($('c-dist'), a);
+  drawMeasures($('c-meas'), a);
+  tableByCase($('t-case'), a);
+  tableDist($('t-dist'), a);
+  tableMeasures($('t-meas'), a);
+
+  body.querySelectorAll('.tabletoggle').forEach(b => {
+    b.addEventListener('click', () => {
+      const t = $(b.dataset.t);
+      const c = $(b.dataset.t.replace('t-', 'c-'));
+      const showing = t.hidden;
+      t.hidden = !showing; c.hidden = showing;
+      b.textContent = showing ? 'Chart' : 'Table';
+    });
+  });
+
+  $('dashFooter').innerHTML = footerHtml(a);
+}
+
+const kpi = (label, value, sub) => `
+  <div class="kpi">
+    <div class="kpi__label">${esc(label)}</div>
+    <div class="kpi__value">${esc(value)}</div>
+    <div class="kpi__sub">${esc(sub)}</div>
+  </div>`;
+
+const legendHtml = () => `
+  <div class="legend">
+    <span class="legend__item"><span class="legend__swatch" style="background:var(--series-1)"></span> Control — neutral background</span>
+    <span class="legend__item"><span class="legend__swatch" style="background:var(--series-2)"></span> Informed — told about the controversy</span>
+  </div>`;
+
+function footerHtml(a) {
+  return `
+    <p><strong>${esc(CONFIG.STUDY_TITLE)}</strong> — ${esc(CONFIG.RESEARCHER)}.
+    ${a.local ? 'Running in local mode (responses stored in this browser only).' : 'Live data.'}
+    Last updated ${new Date(a.updatedAt).toLocaleString()}.</p>
+    <p>No personal data is collected or stored. Nicknames are self-chosen and optional. Clips are embedded from official rights-holder channels on YouTube and are not hosted by this site. Background texts cite published reporting; allegations are described as allegations and each person's response is reported alongside.</p>`;
+}
+
+function demoTable(d) {
+  const block = (title, obj) => {
+    const rows = Object.entries(obj).sort((a, b) => b[1] - a[1]);
+    const tot = rows.reduce((s, r) => s + r[1], 0) || 1;
+    return `<div>
+      <h4 style="font-size:.88rem;margin:0 0 6px;color:var(--text-secondary);font-weight:580">${esc(title)}</h4>
+      <table class="dt"><tbody>${rows.map(([k, v]) =>
+        `<tr><td>${esc(k)}</td><td>${v}</td><td>${Math.round(100 * v / tot)}%</td></tr>`).join('')}</tbody></table>
+    </div>`;
+  };
+  return `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px 30px;align-items:start">
+    ${block('Age', d.age)}${block('Region', d.region)}${block('Viewing frequency', d.freq)}</div>`;
+}
+
+/* ------------------------------- tooltip -------------------------------- */
+const tipEl = () => $('tip');
+function bindTip(node, html) {
+  const t = tipEl();
+  const move = (e) => {
+    t.innerHTML = html;
+    t.style.opacity = '1';
+    const x = Math.min(e.clientX + 14, window.innerWidth - 250);
+    t.style.left = x + 'px';
+    t.style.top = Math.max(8, e.clientY - 12) + 'px';
+  };
+  node.addEventListener('mousemove', move);
+  node.addEventListener('mouseenter', move);
+  node.addEventListener('mouseleave', () => { t.style.opacity = '0'; });
+  node.addEventListener('focus', (e) => {
+    const r = node.getBoundingClientRect();
+    move({ clientX: r.left + r.width / 2, clientY: r.top });
+  });
+  node.addEventListener('blur', () => { t.style.opacity = '0'; });
+}
+
+/* =============================== CHARTS ================================== */
+/* Horizontal grouped bars: mean enjoyment per show, control vs informed.   */
+function drawByCase(host, a) {
+  const rows = a.byCase.filter(r => r.control.n || r.informed.n);
+  if (!rows.length) { host.innerHTML = '<p class="muted small">No ratings yet.</p>'; return; }
+
+  const PAD_L = 152, PAD_R = 62, PAD_T = 22, PAD_B = 34;
+  const BAR = 13, GAP = 2, ROW_GAP = 20;
+  const rowH = BAR * 2 + GAP + ROW_GAP;
+  const W = 720, H = PAD_T + rows.length * rowH + PAD_B;
+  const x0 = 1, x1 = 7;
+  const px = v => PAD_L + (v - x0) / (x1 - x0) * (W - PAD_L - PAD_R);
+
+  let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img"
+    aria-label="Mean enjoyment rating by show for the control and informed groups">`;
+
+  for (let t = 1; t <= 7; t++) {
+    s += `<line class="gridline" x1="${px(t)}" y1="${PAD_T - 6}" x2="${px(t)}" y2="${H - PAD_B}"/>`;
+    s += `<text class="ax" x="${px(t)}" y="${H - PAD_B + 16}" text-anchor="middle">${t}</text>`;
+  }
+  s += `<text class="ax" x="${(PAD_L + W - PAD_R) / 2}" y="${H - 4}" text-anchor="middle">Mean enjoyment (1–7)</text>`;
+
+  rows.forEach((r, i) => {
+    const yTop = PAD_T + i * rowH;
+    s += `<text class="axlabel" x="${PAD_L - 12}" y="${yTop + BAR + 4}" text-anchor="end">${esc(trunc(r.show, 22))}</text>`;
+
+    [['control', r.control, 'var(--series-1)'], ['informed', r.informed, 'var(--series-2)']]
+      .forEach(([name, st, col], k) => {
+        if (!st.n || st.mean == null) return;
+        const y = yTop + k * (BAR + GAP);
+        const w = Math.max(2, px(st.mean) - px(x0));
+        s += `<rect class="bar" x="${px(x0)}" y="${y}" width="${w}" height="${BAR}"
+               rx="4" ry="4" fill="${col}" tabindex="0" role="img"
+               data-tip="<strong>${esc(r.show)}</strong><br>${name} group<br>mean ${fmt(st.mean)} · n=${st.n}"/>`;
+      });
+
+    if (r.control.mean != null && r.informed.mean != null) {
+      const d = r.informed.mean - r.control.mean;
+      s += `<text class="vlabel" x="${W - PAD_R + 8}" y="${yTop + BAR + 4}">${d > 0 ? '+' : ''}${fmt(d, 1)}</text>`;
+    }
+  });
+
+  s += `<line class="baseline" x1="${px(x0)}" y1="${PAD_T - 6}" x2="${px(x0)}" y2="${H - PAD_B}"/></svg>`;
+  host.innerHTML = s;
+  wireTips(host);
+}
+
+/* Diverging stacked bar for the ordered 1–7 enjoyment scale.               */
+function drawDist(host, a) {
+  const conds = [['control', 'Control'], ['informed', 'Informed']];
+  const any = conds.some(([c]) => a.dist[c].some(v => v > 0));
+  if (!any) { host.innerHTML = '<p class="muted small">No ratings yet.</p>'; return; }
+
+  const COLORS = ['var(--div-neg-3)', 'var(--div-neg-2)', 'var(--div-neg-1)',
+                  'var(--div-mid)', 'var(--div-pos-1)', 'var(--div-pos-2)', 'var(--div-pos-3)'];
+  const PAD_L = 92, PAD_R = 26, PAD_T = 12, PAD_B = 52;
+  const BAR = 30, ROW_GAP = 22;
+  const W = 720, H = PAD_T + conds.length * (BAR + ROW_GAP) + PAD_B;
+  const plotW = W - PAD_L - PAD_R;
+
+  let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img"
+    aria-label="Distribution of enjoyment ratings from 1 to 7 for each group">`;
+
+  // Work out how far each row reaches left and right of the neutral midpoint,
+  // then scale so that the widest reach on each side still fits the plot.
+  const frac = conds.map(([key]) => {
+    const counts = a.dist[key];
+    const tot = counts.reduce((x, y) => x + y, 0);
+    if (!tot) return { left: 0, right: 0, tot: 0, counts };
+    const left = (counts[0] + counts[1] + counts[2]) / tot + (counts[3] / tot) / 2;
+    return { left, right: 1 - left, tot, counts };
+  });
+  const maxL = Math.max(...frac.map(f => f.left), 0.02);
+  const maxR = Math.max(...frac.map(f => f.right), 0.02);
+  const scale = plotW / (maxL + maxR);
+  const midX = PAD_L + maxL * scale;
+
+  conds.forEach(([key, label], i) => {
+    const { counts, tot, left } = frac[i];
+    const y = PAD_T + i * (BAR + ROW_GAP);
+    s += `<text class="axlabel" x="${PAD_L - 12}" y="${y + BAR / 2 + 4}" text-anchor="end">${label}</text>`;
+    if (!tot) return;
+
+    let cursor = midX - left * scale;
+
+    counts.forEach((c, k) => {
+      if (!c) return;
+      const w = c / tot * scale;
+      const drawW = Math.max(0, w - 2);
+      const pct = Math.round(100 * c / tot);
+      s += `<rect x="${cursor}" y="${y}" width="${drawW}" height="${BAR}"
+             rx="${k === 0 || k === 6 ? 4 : 0}" fill="${COLORS[k]}" tabindex="0" role="img"
+             data-tip="<strong>Rated ${k + 1} / 7</strong><br>${label} group<br>${c} rating${c === 1 ? '' : 's'} · ${pct}%"/>`;
+      if (drawW > 34) {
+        s += `<text class="vlabel" x="${cursor + drawW / 2}" y="${y + BAR / 2 + 4}" text-anchor="middle"
+               fill="${k >= 4 || k === 0 ? '#fff' : 'var(--text-primary)'}">${pct}%</text>`;
+      }
+      cursor += w;
+    });
+  });
+
+  s += `<line class="baseline" x1="${midX}" y1="${PAD_T - 4}" x2="${midX}" y2="${PAD_T + conds.length * (BAR + ROW_GAP) - ROW_GAP + 4}"/>`;
+
+  const ly = H - PAD_B + 22;
+  const sw = plotW / 7;
+  for (let k = 0; k < 7; k++) {
+    s += `<rect x="${PAD_L + k * sw}" y="${ly - 9}" width="${Math.max(2, sw - 2)}" height="9" fill="${COLORS[k]}"/>`;
+    s += `<text class="ax" x="${PAD_L + k * sw + sw / 2}" y="${ly + 13}" text-anchor="middle">${k + 1}</text>`;
+  }
+  s += `<text class="ax" x="${PAD_L}" y="${ly - 15}">Did not enjoy</text>`;
+  s += `<text class="ax" x="${PAD_L + plotW}" y="${ly - 15}" text-anchor="end">Enjoyed a lot</text>`;
+  s += `</svg>`;
+  host.innerHTML = s;
+  wireTips(host);
+}
+
+/* Grouped columns: the five measures, control vs informed.                  */
+function drawMeasures(host, a) {
+  const keys = ITEMS.map(i => i.key).filter(k => a.overall.control[k].n || a.overall.informed[k].n);
+  if (!keys.length) { host.innerHTML = '<p class="muted small">No ratings yet.</p>'; return; }
+
+  const PAD_L = 44, PAD_R = 16, PAD_T = 30, PAD_B = 58;
+  const W = 720, H = 320;
+  const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B;
+  const band = plotW / keys.length;
+  const BAR = Math.min(24, band / 3.1), GAP = 2;
+  const py = v => PAD_T + plotH - ((v - 1) / 6) * plotH;
+
+  let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img"
+    aria-label="Mean score on each of the five measures for the control and informed groups">`;
+
+  for (let t = 1; t <= 7; t++) {
+    s += `<line class="gridline" x1="${PAD_L}" y1="${py(t)}" x2="${W - PAD_R}" y2="${py(t)}"/>`;
+    s += `<text class="ax" x="${PAD_L - 9}" y="${py(t) + 4}" text-anchor="end">${t}</text>`;
+  }
+
+  keys.forEach((k, i) => {
+    const cx = PAD_L + band * i + band / 2;
+    [['control', a.overall.control[k], 'var(--series-1)'],
+     ['informed', a.overall.informed[k], 'var(--series-2)']].forEach(([name, st, col], j) => {
+      if (!st.n || st.mean == null) return;
+      const x = cx - BAR - GAP / 2 + j * (BAR + GAP);
+      const y = py(st.mean);
+      s += `<rect x="${x}" y="${y}" width="${BAR}" height="${Math.max(2, py(1) - y)}"
+             rx="4" ry="4" fill="${col}" tabindex="0" role="img"
+             data-tip="<strong>${esc(MEASURE_LABELS[k])}</strong><br>${name} group<br>mean ${fmt(st.mean)} · n=${st.n}"/>`;
+    });
+
+    const c = a.overall.control[k].mean, m = a.overall.informed[k].mean;
+    if (c != null && m != null) {
+      const d = m - c;
+      s += `<text class="vlabel" x="${cx}" y="${PAD_T - 12}" text-anchor="middle">${d > 0 ? '+' : ''}${fmt(d, 1)}</text>`;
+    }
+    wrapLabel(MEASURE_LABELS[k], cx, H - PAD_B + 20).forEach(l => { s += l; });
+  });
+
+  s += `<line class="baseline" x1="${PAD_L}" y1="${py(1)}" x2="${W - PAD_R}" y2="${py(1)}"/>`;
+  s += `<text class="ax" x="${PAD_L - 9}" y="${PAD_T - 12}" text-anchor="end">Mean</text></svg>`;
+  host.innerHTML = s;
+  wireTips(host);
+}
+
+function wrapLabel(text, cx, y) {
+  const words = String(text).split(' ');
+  const lines = [];
+  let cur = '';
+  words.forEach(w => {
+    if ((cur + ' ' + w).trim().length > 12) { if (cur) lines.push(cur); cur = w; }
+    else cur = (cur + ' ' + w).trim();
+  });
+  if (cur) lines.push(cur);
+  return lines.map((l, i) =>
+    `<text class="axlabel" x="${cx}" y="${y + i * 14}" text-anchor="middle">${esc(l)}</text>`);
+}
+
+const trunc = (s, n) => s.length > n ? s.slice(0, n - 1) + '…' : s;
+
+function wireTips(host) {
+  host.querySelectorAll('[data-tip]').forEach(el => bindTip(el, el.getAttribute('data-tip')));
+}
+
+/* ------------------------------ table views ------------------------------ */
+function tableByCase(host, a) {
+  const rows = a.byCase.filter(r => r.control.n || r.informed.n);
+  host.innerHTML = `<table class="dt"><thead><tr>
+      <th>Show</th><th>Control mean</th><th>n</th><th>Informed mean</th><th>n</th><th>Difference</th>
+    </tr></thead><tbody>${rows.map(r => {
+      const d = (r.control.mean != null && r.informed.mean != null)
+        ? (r.informed.mean - r.control.mean) : null;
+      return `<tr><td>${esc(r.show)}</td>
+        <td>${fmt(r.control.mean)}</td><td>${r.control.n}</td>
+        <td>${fmt(r.informed.mean)}</td><td>${r.informed.n}</td>
+        <td>${d == null ? '—' : (d > 0 ? '+' : '') + fmt(d)}</td></tr>`;
+    }).join('')}</tbody></table>`;
+}
+
+function tableDist(host, a) {
+  host.innerHTML = `<table class="dt"><thead><tr><th>Rating</th>
+    <th>Control</th><th>Control %</th><th>Informed</th><th>Informed %</th></tr></thead><tbody>
+    ${[1, 2, 3, 4, 5, 6, 7].map(v => {
+      const c = a.dist.control[v - 1], m = a.dist.informed[v - 1];
+      const tc = a.dist.control.reduce((x, y) => x + y, 0) || 1;
+      const tm = a.dist.informed.reduce((x, y) => x + y, 0) || 1;
+      return `<tr><td>${v}</td><td>${c}</td><td>${Math.round(100 * c / tc)}%</td>
+        <td>${m}</td><td>${Math.round(100 * m / tm)}%</td></tr>`;
+    }).join('')}</tbody></table>`;
+}
+
+function tableMeasures(host, a) {
+  host.innerHTML = `<table class="dt"><thead><tr>
+    <th>Measure</th><th>Control mean</th><th>SD</th><th>Informed mean</th><th>SD</th><th>Difference</th>
+  </tr></thead><tbody>${ITEMS.map(i => i.key).map(k => {
+    const c = a.overall.control[k], m = a.overall.informed[k];
+    const d = (c.mean != null && m.mean != null) ? m.mean - c.mean : null;
+    return `<tr><td>${esc(MEASURE_LABELS[k])}</td>
+      <td>${fmt(c.mean)}</td><td>${fmt(c.sd)}</td>
+      <td>${fmt(m.mean)}</td><td>${fmt(m.sd)}</td>
+      <td>${d == null ? '—' : (d > 0 ? '+' : '') + fmt(d)}</td></tr>`;
+  }).join('')}</tbody></table>`;
+}
+
+/* ------------------------------- CSV export ------------------------------ */
+$('btnCsv').addEventListener('click', () => {
+  const a = S.agg;
+  if (!a) return;
+  const L = [];
+  L.push(['Art vs. Artist — summary export', new Date().toISOString()]);
+  L.push([]);
+  L.push(['Participants', a.nParticipants, 'Clip ratings', a.nRatings]);
+  L.push([]);
+  L.push(['Measure', 'Control mean', 'Control SD', 'Control n', 'Informed mean', 'Informed SD', 'Informed n', 'Difference']);
+  ITEMS.map(i => i.key).forEach(k => {
+    const c = a.overall.control[k], m = a.overall.informed[k];
+    L.push([MEASURE_LABELS[k], fmt(c.mean), fmt(c.sd), c.n, fmt(m.mean), fmt(m.sd), m.n,
+      (c.mean != null && m.mean != null) ? fmt(m.mean - c.mean) : '']);
+  });
+  L.push([]);
+  L.push(['Show', 'Control mean', 'Control n', 'Informed mean', 'Informed n', 'Difference']);
+  a.byCase.forEach(r => L.push([r.show, fmt(r.control.mean), r.control.n,
+    fmt(r.informed.mean), r.informed.n,
+    (r.control.mean != null && r.informed.mean != null) ? fmt(r.informed.mean - r.control.mean) : '']));
+  L.push([]);
+  L.push(['Enjoyment rating', 'Control count', 'Informed count']);
+  for (let v = 1; v <= 7; v++) L.push([v, a.dist.control[v - 1], a.dist.informed[v - 1]]);
+
+  const csv = L.map(r => r.map(cell => {
+    const s = String(cell == null ? '' : cell);
+    return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }).join(',')).join('\n');
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'art-vs-artist-summary.csv';
+  link.click();
+  URL.revokeObjectURL(url);
+});
+
+/* ------------------------------ deep links ------------------------------- */
+if (location.hash === '#results') loadDash();
+else show('welcome');
+
+</script>
+</body>
+</html>
