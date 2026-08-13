@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Art vs. Artist — a study of television and creator controversy</title>
-<meta name="description" content="A short, anonymous research study: does knowing about a TV creator's misconduct change how much you enjoy their show? Watch three clips, rate them, and see the live results.">
+<title>Art vs. Artist: a study of television and creator controversy</title>
+<meta name="description" content="A short, anonymous research study. Does knowing about a TV creator's misconduct change how much you enjoy their show? Watch three clips, rate them, and see the live results.">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Art vs. Artist — a 7-minute anonymous study">
+<meta property="og:title" content="Art vs. Artist: a 7-minute anonymous study">
 <meta property="og:description" content="Does knowing about a creator's misconduct change how much you enjoy their show? Watch three clips, rate them, then see what everyone else said.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
 <style>
 /* ==========================================================================
-   Art vs. Artist — stylesheet
+   Art vs. Artist: stylesheet
    Palette values are the validated reference instance (see dataviz skill).
    ========================================================================== */
 
@@ -33,11 +33,11 @@
   --border:   rgba(11, 11, 11, 0.10);
   --border-strong: rgba(11, 11, 11, 0.18);
 
-  /* categorical — validated pair */
+  /* categorical: validated pair */
   --series-1: #2a78d6;   /* Control  */
   --series-2: #eb6834;   /* Informed */
 
-  /* diverging arms for the ordered 1–7 scale */
+  /* diverging arms for the ordered 1-7 scale */
   --div-neg-3: #d03b3b;
   --div-neg-2: #e07070;
   --div-neg-1: #efaaaa;
@@ -237,7 +237,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible,
 }
 .chip:has(input:focus-visible) { outline: 2px solid var(--series-1); outline-offset: 2px; }
 
-/* 1–7 scale */
+/* 1-7 scale */
 .scale { margin-top: 10px; }
 .scale__opts { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
 .scale__opt {
@@ -403,6 +403,8 @@ ul.clean li { margin-bottom: .42em; }
   <div class="topbar__inner">
     <div class="brand">Art vs.&nbsp;Artist <span>· research study</span></div>
     <div class="topbar__spacer"></div>
+    <button class="iconbtn" id="btnAbout2" type="button">The study</button>
+    <button class="iconbtn" id="btnPaper" type="button">Paper</button>
     <button class="iconbtn" id="btnResults" type="button">Results</button>
     <button class="iconbtn" id="btnTheme" type="button" aria-label="Switch colour theme">◐</button>
   </div>
@@ -415,42 +417,42 @@ ul.clean li { margin-bottom: .42em; }
   <section class="step" id="step-welcome">
     <div class="eyebrow">Undergraduate research · University of the People</div>
     <h1>Can you separate the art from the artist?</h1>
-    <p class="lede">Almost every month, someone who made something you love turns out to have done something you can't ignore. This study asks a narrower, testable version of that question: <strong>when you know what a creator did, does the show itself actually feel different?</strong></p>
+    <p class="lede">Almost every month, someone who made something you love turns out to have done something you can't ignore. This study asks a narrower, testable version of that question. <strong>When you find out what a creator did, does the show itself actually feel different?</strong></p>
 
-    <p>Psychologists have already shown this effect for paintings. Nobody has tested it for television, where a show is made by hundreds of people and a good story pulls you in. That's the gap this study is trying to close — and it needs your ratings to do it.</p>
+    <p>Psychologists have already shown this effect for paintings. Nobody has tested it for television, where a show is made by hundreds of people and a good story pulls you in. That is the gap this study is trying to close, and it needs your ratings to do it.</p>
 
     <div class="card" style="margin-top:26px">
       <h3>What you'll actually do</h3>
       <ul class="clean">
-        <li>Answer three quick questions about yourself — no name, no email, nothing identifying.</li>
-        <li>Watch <strong>three short clips</strong> from real television shows, roughly 1–4 minutes each.</li>
-        <li>Rate each one on five sliders and say, in your own words, what you think.</li>
-        <li>See the <strong>live results dashboard</strong> — everyone's answers so far, updated the moment you submit.</li>
+        <li>Answer three quick questions about yourself. No name, no email, nothing identifying.</li>
+        <li>Watch <strong>three short clips</strong> from real television shows, roughly 1 to 4 minutes each.</li>
+        <li>Rate your first impression of each clip, then read some background about the show, then rate it in more detail.</li>
+        <li>See the <strong>live results dashboard</strong>: everyone's answers so far, updated the moment you submit.</li>
       </ul>
-      <p class="small muted" style="margin-bottom:0">About 7–10 minutes. Best with sound on.</p>
+      <p class="small muted" style="margin-bottom:0">About 8 to 10 minutes. Best with sound on.</p>
     </div>
 
     <div class="notice">
-      <strong>One thing you should know now:</strong> participants are randomly split into two groups that read slightly different background information before each clip. You'll be told exactly which group you were in, and why, on the final page. Nothing you read here is fabricated — every factual claim is sourced and linked.
+      <strong>One thing you should know now.</strong> Participants are randomly split into two groups, and the two groups read slightly different background information about each show. You'll be told exactly which group you were in, and why, on the final page. Nothing you read here is invented. Every factual claim is sourced and linked.
     </div>
 
     <h3 style="margin-top:34px">Your privacy</h3>
     <ul class="clean small">
       <li><strong>No personal data is collected.</strong> No name, email, IP address, login, or tracking cookie.</li>
-      <li>You may enter a made-up nickname if you'd like to spot your own row later. Leave it blank if you prefer — it's optional, and you should not use your real name.</li>
+      <li>You may enter a made-up nickname if you'd like to spot your own row later. Leave it blank if you prefer. It is optional, and you should not use your real name.</li>
       <li>Age is recorded as a broad band and location as a world region, so that no combination of answers can identify you.</li>
       <li>Your answers are stored in a single spreadsheet owned by the student researcher and used only for this coursework.</li>
-      <li>You can stop at any point by closing the tab, and nothing is saved unless you press submit at the end.</li>
+      <li>You can stop at any point by closing the tab. Nothing is saved unless you press submit at the end.</li>
     </ul>
 
     <div class="notice notice--warn">
-      <strong>Content note.</strong> The background information in this study describes real allegations of workplace abuse, sexual harassment, harassment of minors, and racism. It is written factually and without graphic detail, but if that's not something you want to read today, please don't take part.
+      <strong>Content note.</strong> The background information in this study describes real allegations of workplace abuse, sexual harassment, harassment of minors, and racism. It is written factually and without graphic detail, but if that is not something you want to read today, please don't take part.
     </div>
 
     <p class="small muted">By pressing the button below you confirm you are 18 or over, that you're taking part voluntarily, and that you agree to your anonymous answers being used in this student research project.</p>
 
     <div class="btnrow">
-      <button class="btn" id="btnConsent" type="button">I understand — let's begin</button>
+      <button class="btn" id="btnConsent" type="button">I understand, let's begin</button>
       <button class="btn btn--ghost" id="btnSkipToResults" type="button">Just show me the results</button>
     </div>
   </section>
@@ -464,7 +466,7 @@ ul.clean li { margin-bottom: .42em; }
     <div class="card">
       <div class="field">
         <label for="nickname">Nickname <span class="muted" style="font-weight:400">(optional)</span></label>
-        <p class="hint">Anything you like — <em>not</em> your real name. It's only so you can find your own response in the results.</p>
+        <p class="hint">Anything you like, but <em>not</em> your real name. It is only so you can find your own response in the results.</p>
         <input type="text" id="nickname" maxlength="24" autocomplete="off" spellcheck="false" placeholder="e.g. purplemoose">
       </div>
 
@@ -491,19 +493,11 @@ ul.clean li { margin-bottom: .42em; }
     </div>
   </section>
 
-  <!-- ============================ 3. CLIPS ============================= -->
-  <section class="step" id="step-clip" hidden>
-    <div class="eyebrow" id="clipEyebrow">Step 2 of 3 · Clip 1 of 3</div>
-    <div class="showhead">
-      <h1 id="clipShow">Show</h1>
-    </div>
-    <p class="muted small" id="clipMeta" style="margin-top:-4px"></p>
-
-    <div class="brief">
-      <div class="brief__label">Background</div>
-      <p id="clipBrief"></p>
-      <p class="srcs" id="clipSrcs"></p>
-    </div>
+  <!-- ====================== 3a. THE CLIP ITSELF ======================== -->
+  <section class="step" id="step-clipVideo" hidden>
+    <div class="eyebrow" id="videoEyebrow">Step 2 of 3 · Clip 1 of 3</div>
+    <h1 id="videoShow">Show</h1>
+    <p class="lede">Watch the whole clip, then press continue. There is nothing to read yet.</p>
 
     <div class="videowrap"><iframe id="clipFrame" title="Television clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
     <div class="videometa">
@@ -511,8 +505,37 @@ ul.clean li { margin-bottom: .42em; }
       <a id="clipDirect" href="#" target="_blank" rel="noopener">Trouble playing? Open on YouTube ↗</a>
     </div>
 
+    <div class="btnrow">
+      <button class="btn" id="btnVideo" type="button">I've watched it, continue</button>
+    </div>
+  </section>
+
+  <!-- ======================= 3b. BACKGROUND ============================ -->
+  <section class="step" id="step-clipBrief" hidden>
+    <div class="eyebrow" id="briefEyebrow">Step 2 of 3 · Clip 1 of 3</div>
+    <h1 id="briefShow">Show</h1>
+    <p class="muted small" id="briefMeta" style="margin-top:-4px"></p>
+
+    <p class="lede">Here is some background on the show you just watched. Please read it before you continue.</p>
+
+    <div class="brief">
+      <div class="brief__label">Background</div>
+      <p id="clipBrief"></p>
+      <p class="srcs" id="clipSrcs"></p>
+    </div>
+
+    <div class="btnrow">
+      <button class="btn" id="btnBrief" type="button">I've read it, continue</button>
+    </div>
+  </section>
+
+  <!-- ==================== 3d. DETAILED RATINGS ========================= -->
+  <section class="step" id="step-clipDetail" hidden>
+    <div class="eyebrow" id="detailEyebrow">Step 2 of 3 · Clip 1 of 3</div>
+    <h1 id="detailShow">Your ratings</h1>
+    <p class="lede">Now rate the clip you just watched. Go with your honest reaction. There are no right answers.</p>
+
     <div class="card">
-      <p class="small muted" style="margin-top:0">Please watch the whole clip before answering. There are no right answers — your honest reaction is the data.</p>
       <div id="clipQuestions"></div>
 
       <div class="qblock">
@@ -542,7 +565,7 @@ ul.clean li { margin-bottom: .42em; }
     <div class="card">
       <div class="field">
         <label for="openText">When you find out that the person behind a show did something wrong, does it change how you watch it? Why, or why not?</label>
-        <p class="hint">Anything goes — a personal example, a principle you hold, a show you gave up, or one you kept watching anyway. Two or three sentences is plenty. Please don't include anything that would identify you or anyone else.</p>
+        <p class="hint">Anything goes: a personal example, a principle you hold, a show you gave up, or one you kept watching anyway. Two or three sentences is plenty. Please don't include anything that would identify you or anyone else.</p>
         <textarea id="openText" maxlength="1800" placeholder="Write as much or as little as you like…"></textarea>
         <p class="tiny muted" id="charCount">0 / 1800</p>
       </div>
@@ -571,9 +594,32 @@ ul.clean li { margin-bottom: .42em; }
     </div>
   </section>
 
+  <!-- ============================ 6. PAPER ============================ -->
+  <section class="step" id="step-paperGate" hidden>
+    <div class="eyebrow">The write-up</div>
+    <h1>This page gives away what the study is testing</h1>
+    <p class="lede">The paper states the hypothesis in the first paragraph. If you have not taken part yet and you read it now, your answers will not be usable, because you'll know what the study expects to find.</p>
+    <div class="notice">
+      This is not a formality. Knowing the hypothesis in advance is one of the most common ways a small study gets ruined, so it is worth thirty seconds of your patience.
+    </div>
+    <div class="btnrow">
+      <button class="btn" id="btnPaperTakeFirst" type="button">Take the study first (8 minutes)</button>
+      <button class="btn btn--ghost" id="btnPaperShow" type="button">I've already taken part, show me</button>
+    </div>
+  </section>
+
+  <section class="step" id="step-paper" hidden>
+    <div class="eyebrow">The write-up</div>
+    <h1 id="paperTitle">Separating art from the artist</h1>
+    <div id="paperBody"></div>
+    <div class="btnrow">
+      <button class="btn btn--ghost" id="btnPaperBack" type="button">Back to the study</button>
+    </div>
+  </section>
+
 </main>
 
-<!-- ============================ 6. DASHBOARD =========================== -->
+<!-- ============================ 7. DASHBOARD =========================== -->
 <div class="wrap wrap--wide" id="dashWrap" hidden>
   <section class="step" id="step-dash">
     <div class="eyebrow">Live results</div>
@@ -593,7 +639,7 @@ ul.clean li { margin-bottom: .42em; }
 
 <script>
 /* ============================================================================
-   Art vs. Artist — stimulus set
+   Art vs. Artist: stimulus set
    ----------------------------------------------------------------------------
    Eight television cases. Each has TWO background texts of closely matched
    length, so that reading time is not a confound between conditions:
@@ -616,7 +662,7 @@ const CASES = [
     show: 'Victorious',
     creator: 'Dan Schneider',
     role: 'Creator and executive producer',
-    network: 'Nickelodeon (2010–2013)',
+    network: 'Nickelodeon (2010-2013)',
     category: 'Alleged workplace misconduct',
     video: 'c6LWdF2IUF4',
     clipTitle: 'Victorious | Prom Wrecker',
@@ -627,8 +673,8 @@ const CASES = [
     informed: `Victorious ran on Nickelodeon between 2010 and 2013 and was created by Dan Schneider. In 2013 two former writers sued, alleging he made sexually explicit jokes in the writers' room, asked staff for massages, and made derogatory remarks about women writers; the case settled out of court with no admission of liability. Schneider left Nickelodeon in 2018 after an internal investigation reportedly found he had been verbally abusive to staff. In 2024 he apologised on video for the writers'-room jokes and the massage requests. He has consistently denied any sexual misconduct involving minors, and has sued the makers of a 2024 documentary for defamation.`,
 
     sources: [
-      { label: 'BBC News — Schneider apologises (2024)', url: 'https://www.bbc.com/news/world-us-canada-68616476' },
-      { label: 'TIME — defamation lawsuit filed (2024)', url: 'https://time.com/6973495/dan-schneider-quiet-on-set-defamation-lawsuit/' }
+      { label: 'BBC News: Schneider apologises (2024)', url: 'https://www.bbc.com/news/world-us-canada-68616476' },
+      { label: 'TIME: defamation lawsuit filed (2024)', url: 'https://time.com/6973495/dan-schneider-quiet-on-set-defamation-lawsuit/' }
     ]
   },
 
@@ -637,10 +683,10 @@ const CASES = [
     show: 'Buffy the Vampire Slayer',
     creator: 'Joss Whedon',
     role: 'Creator and showrunner',
-    network: 'The WB / UPN (1997–2003)',
+    network: 'The WB / UPN (1997-2003)',
     category: 'Alleged workplace abuse',
     video: 'MIoSOiuwhfQ',
-    clipTitle: 'Buffy the Vampire Slayer — S02E14 "Innocence"',
+    clipTitle: 'Buffy the Vampire Slayer: S02E14 "Innocence"',
     channel: 'Buffy the Vampire Slayer (official)',
 
     neutral: `Buffy the Vampire Slayer ran for seven seasons between 1997 and 2003, first on The WB and later on UPN, and was created by Joss Whedon. It follows Buffy Summers, a California teenager who inherits the role of a supernatural protector while trying to finish high school. The series is frequently studied in film and media courses for its serialised structure and its use of genre metaphor, and one episode was performed almost entirely without dialogue while another was staged as a musical. It has been in continuous syndication and streaming release since it ended, and spawned the spin-off series Angel.`,
@@ -648,8 +694,8 @@ const CASES = [
     informed: `Buffy the Vampire Slayer ran from 1997 to 2003 and was created by Joss Whedon. In February 2021 the actor Charisma Carpenter alleged that Whedon had "a history of being casually cruel", said he had commented on her body while she was pregnant, and said he wrote her out of the spin-off after she gave birth; several castmates publicly supported her account. The actor Ray Fisher had earlier described Whedon's conduct on a separate production as "abusive" and "unprofessional". In a 2022 interview Whedon denied the central allegations while acknowledging he had not been "mannerly" on set. No lawsuits or charges followed.`,
 
     sources: [
-      { label: 'Salon — Charisma Carpenter\'s allegations (2021)', url: 'https://www.salon.com/2021/02/10/buffy-charisma-carpenter-joss-whedon-abuse/' },
-      { label: 'NPR — Whedon responds (2022)', url: 'https://www.npr.org/2022/01/18/1073881791/joss-whedon-was-once-hailed-as-a-feminist-then-came-the-stories-about-his-behavi' }
+      { label: 'Salon: Charisma Carpenter\'s allegations (2021)', url: 'https://www.salon.com/2021/02/10/buffy-charisma-carpenter-joss-whedon-abuse/' },
+      { label: 'NPR: Whedon responds (2022)', url: 'https://www.npr.org/2022/01/18/1073881791/joss-whedon-was-once-hailed-as-a-feminist-then-came-the-stories-about-his-behavi' }
     ]
   },
 
@@ -658,7 +704,7 @@ const CASES = [
     show: 'The Loud House',
     creator: 'Chris Savino',
     role: 'Creator and showrunner',
-    network: 'Nickelodeon (2016– )',
+    network: 'Nickelodeon (2016 onwards)',
     category: 'Alleged sexual harassment',
     video: 'Z_aV_PJ5Z7s',
     clipTitle: 'The Loud House | Slice of Life',
@@ -669,8 +715,8 @@ const CASES = [
     informed: `The Loud House premiered on Nickelodeon in 2016 and was created by Chris Savino. In October 2017 the trade outlet Cartoon Brew reported that around a dozen women, most of them former colleagues, had alleged sexual harassment, inappropriate behaviour and threats of professional retaliation. Nickelodeon suspended Savino, and after an internal investigation he was dismissed. In an open letter Savino apologised without disputing the substance of the accounts, writing that he was "deeply sorry" and "ashamed" and that his actions had "created an uncomfortable environment". No lawsuit or criminal charge followed. The series continued in production without him.`,
 
     sources: [
-      { label: 'Cartoon Brew — Savino dismissed (2017)', url: 'https://www.cartoonbrew.com/tv/loud-house-creator-chris-savino-fired-nickelodeon-sexual-harassment-allegations-154121.html' },
-      { label: 'CBS News — Savino\'s public apology (2017)', url: 'https://www.cbsnews.com/news/chris-savino-ex-nickelodeon-producer-sexual-harassment-allegations/' }
+      { label: 'Cartoon Brew: Savino dismissed (2017)', url: 'https://www.cartoonbrew.com/tv/loud-house-creator-chris-savino-fired-nickelodeon-sexual-harassment-allegations-154121.html' },
+      { label: 'CBS News: Savino\'s public apology (2017)', url: 'https://www.cbsnews.com/news/chris-savino-ex-nickelodeon-producer-sexual-harassment-allegations/' }
     ]
   },
 
@@ -679,7 +725,7 @@ const CASES = [
     show: 'Community',
     creator: 'Dan Harmon',
     role: 'Creator and showrunner',
-    network: 'NBC / Yahoo! Screen (2009–2015)',
+    network: 'NBC / Yahoo! Screen (2009-2015)',
     category: 'Acknowledged sexual harassment',
     video: 'XfEH7oLimn0',
     clipTitle: 'Troy and Abed and Annie in the Morning | Community',
@@ -690,8 +736,8 @@ const CASES = [
     informed: `Community ran from 2009 to 2015 and was created by Dan Harmon. In January 2018 the writer Megan Ganz said publicly that Harmon had harassed her while he was her showrunner. Harmon then corroborated her account in detail on his podcast, saying "I was attracted to a writer I had power over because I was a showrunner" and describing how he had treated her badly after she did not reciprocate. He apologised without qualification. Ganz publicly accepted the apology, describing it as "a masterclass in How to Apologize". Harmon was not dismissed, and no lawsuit or criminal charge followed.`,
 
     sources: [
-      { label: 'TIME — Harmon\'s account and apology (2018)', url: 'https://time.com/5100019/dan-harmon-megan-ganz-sexual-harassment-apology/' },
-      { label: 'Slate — the podcast monologue in full (2018)', url: 'https://slate.com/arts/2018/01/dan-harmon-apologizes-to-community-writer-megan-ganz-on-harmontown.html' }
+      { label: 'TIME: Harmon\'s account and apology (2018)', url: 'https://time.com/5100019/dan-harmon-megan-ganz-sexual-harassment-apology/' },
+      { label: 'Slate: the podcast monologue in full (2018)', url: 'https://slate.com/arts/2018/01/dan-harmon-apologizes-to-community-writer-megan-ganz-on-harmontown.html' }
     ]
   },
 
@@ -700,10 +746,10 @@ const CASES = [
     show: 'Roseanne',
     creator: 'Roseanne Barr',
     role: 'Co-creator, executive producer and star',
-    network: 'ABC (1988–1997; revival 2018)',
+    network: 'ABC (1988-1997; revival 2018)',
     category: 'Public statement widely reported as racist',
     video: 'WjvHl-ZzOns',
-    clipTitle: 'The Hillbilly Day Spa — Roseanne',
+    clipTitle: 'The Hillbilly Day Spa: Roseanne',
     channel: 'ABC (official)',
 
     neutral: `Roseanne originally ran on ABC from 1988 to 1997 and was revived for a further season in 2018. Built around the stand-up persona of Roseanne Barr, who co-created the series and starred in it, the show follows the Conners, a working-class family in the fictional town of Lanford, Illinois. It was among the first American sitcoms to centre a household struggling with unstable employment and money, and its writers' room launched several later showrunners. The 2018 revival premiere drew more than eighteen million viewers, one of the largest sitcom audiences of that decade.`,
@@ -711,8 +757,8 @@ const CASES = [
     informed: `Roseanne ran on ABC from 1988 to 1997 and returned for a revival in 2018. On 28 May 2018 Barr posted a message on Twitter about Valerie Jarrett, a Black former adviser to President Obama, which read: "muslim brotherhood & planet of the apes had a baby=vj". ABC cancelled the revival within about a day; its entertainment president called the post "abhorrent, repugnant and inconsistent with our values". Barr deleted the message and apologised, saying she was "truly sorry"; she later said she had not known Jarrett was Black. A spin-off, The Conners, continued without her.`,
 
     sources: [
-      { label: 'CBS News — ABC cancels the revival (2018)', url: 'https://www.cbsnews.com/news/roseanne-canceled-today-after-roseanne-barr-tweet-valerie-jarrett/' },
-      { label: 'CNBC — the spin-off proceeds without Barr (2018)', url: 'https://www.cnbc.com/2018/10/17/roseanne-barr-is-unhappy-about-her-characters-death-in-the-conners.html' }
+      { label: 'CBS News: ABC cancels the revival (2018)', url: 'https://www.cbsnews.com/news/roseanne-canceled-today-after-roseanne-barr-tweet-valerie-jarrett/' },
+      { label: 'CNBC: the spin-off proceeds without Barr (2018)', url: 'https://www.cnbc.com/2018/10/17/roseanne-barr-is-unhappy-about-her-characters-death-in-the-conners.html' }
     ]
   },
 
@@ -721,7 +767,7 @@ const CASES = [
     show: 'The Ren & Stimpy Show',
     creator: 'John Kricfalusi',
     role: 'Creator',
-    network: 'Nickelodeon (1991–1996)',
+    network: 'Nickelodeon (1991-1996)',
     category: 'Alleged grooming of minors',
     video: 'GvDCgR_9-fE',
     clipTitle: 'Space Madness | The Ren & Stimpy Show',
@@ -732,8 +778,8 @@ const CASES = [
     informed: `The Ren & Stimpy Show premiered on Nickelodeon in 1991 and was created by John Kricfalusi. In March 2018 two women told BuzzFeed News that he had pursued them when they were teenagers: Robyn Byrd said he began corresponding with her when she was 13 and that she later lived with him, and Katie Rice said he began contacting her at around 14. Through his attorney, Kricfalusi acknowledged that "for a brief time, 25 years ago, he had a 16-year-old girlfriend", attributed his conduct to then-undiagnosed mental illness, and denied the other allegations. No criminal charges were filed.`,
 
     sources: [
-      { label: 'TIME — the BuzzFeed News allegations (2018)', url: 'https://time.com/5221876/sexual-abuse-accusations-john-kricfalusi/' },
-      { label: 'Newsweek — excluded from the 2020 revival', url: 'https://www.newsweek.com/john-kricfalusi-involved-new-ren-stimpy-after-abuse-allegations-1523097' }
+      { label: 'TIME: the BuzzFeed News allegations (2018)', url: 'https://time.com/5221876/sexual-abuse-accusations-john-kricfalusi/' },
+      { label: 'Newsweek: excluded from the 2020 revival', url: 'https://www.newsweek.com/john-kricfalusi-involved-new-ren-stimpy-after-abuse-allegations-1523097' }
     ]
   },
 
@@ -742,7 +788,7 @@ const CASES = [
     show: 'The Ellen DeGeneres Show',
     creator: 'Ellen DeGeneres',
     role: 'Host and executive producer',
-    network: 'Syndicated / Warner Bros. (2003–2022)',
+    network: 'Syndicated / Warner Bros. (2003-2022)',
     category: 'Alleged workplace culture and racism (vicarious responsibility)',
     video: 'xz67L6OP1ss',
     clipTitle: 'Memorable Monologue: Smile!',
@@ -750,11 +796,11 @@ const CASES = [
 
     neutral: `The Ellen DeGeneres Show was a syndicated daytime talk programme that ran for nineteen seasons between 2003 and 2022, hosted and executive-produced by Ellen DeGeneres. Each episode combined a stand-up monologue, celebrity interviews, audience games and filmed segments, and the format leaned heavily on the host's improvised interaction with the studio audience. The programme won more than sixty Daytime Emmy Awards across its run and its clips became among the most-viewed talk-show material on video platforms. It concluded in 2022, and the host has since returned intermittently to stand-up performance.`,
 
-    informed: `The Ellen DeGeneres Show ran from 2003 to 2022, hosted and executive-produced by Ellen DeGeneres. In July 2020 BuzzFeed News published accounts from current and former employees alleging a hostile workplace, including racist remarks directed at Black staff and intimidation. A second report carried allegations of sexual harassment against three senior producers — not against DeGeneres — two of whom denied them; all three left the programme. DeGeneres was not accused of harassment. She apologised to staff and on air, saying "I learned that things happened here that never should have happened", and said she takes responsibility for what happens under her name.`,
+    informed: `The Ellen DeGeneres Show ran from 2003 to 2022, hosted and executive-produced by Ellen DeGeneres. In July 2020 BuzzFeed News published accounts from current and former employees alleging a hostile workplace, including racist remarks directed at Black staff and intimidation. A second report carried allegations of sexual harassment against three senior producers, not against DeGeneres. Two of the three denied them, and all three left the programme. DeGeneres was not accused of harassment. She apologised to staff and on air, saying "I learned that things happened here that never should have happened", and said she takes responsibility for what happens under her name.`,
 
     sources: [
-      { label: 'NPR — the second round of allegations (2020)', url: 'https://www.npr.org/2020/07/31/897646026/ellen-producers-face-another-round-of-allegations-including-sexual-misconduct' },
-      { label: 'BBC News — three producers depart (2020)', url: 'https://www.bbc.com/news/world-us-canada-53815705' }
+      { label: 'NPR: the second round of allegations (2020)', url: 'https://www.npr.org/2020/07/31/897646026/ellen-producers-face-another-round-of-allegations-including-sexual-misconduct' },
+      { label: 'BBC News: three producers depart (2020)', url: 'https://www.bbc.com/news/world-us-canada-53815705' }
     ]
   },
 
@@ -763,24 +809,24 @@ const CASES = [
     show: 'Arrow',
     creator: 'Andrew Kreisberg',
     role: 'Co-creator and executive producer',
-    network: 'The CW (2012–2020)',
+    network: 'The CW (2012-2020)',
     category: 'Alleged sexual harassment (denied)',
     video: 'OUaDTakFH0U',
-    clipTitle: 'Arrow — Season 1: "You Have Failed This City"',
+    clipTitle: 'Arrow: Season 1: "You Have Failed This City"',
     channel: 'DC (official)',
 
     neutral: `Arrow ran on The CW for eight seasons between 2012 and 2020 and was co-created by Greg Berlanti, Marc Guggenheim and Andrew Kreisberg. It follows Oliver Queen, a wealthy heir presumed dead after a shipwreck, who returns to his city and begins operating as a masked archer. The series established the shared continuity later known as the "Arrowverse", which grew to include The Flash, Supergirl and Legends of Tomorrow, with regular crossover events between them. It was among The CW's most-watched dramas and helped define the network's programming strategy for most of a decade.`,
 
-    informed: `Arrow ran on The CW from 2012 to 2020 and was co-created by Andrew Kreisberg among others. In November 2017 Variety reported allegations from nineteen people — fifteen women and four men — who had worked on Kreisberg's series, describing unwanted touching, repeated requests for massages and frequent sexualised comments about colleagues. Warner Bros. Television suspended him and, after an investigation, terminated his employment. Kreisberg denied the allegations, saying he had commented on appearance but that "they were not sexualized", and that he had never mentored anyone "in what I believe to be an unwanted way". No charge or lawsuit followed.`,
+    informed: `Arrow ran on The CW from 2012 to 2020 and was co-created by Andrew Kreisberg among others. In November 2017 Variety reported allegations from nineteen people, fifteen women and four men, who had worked on Kreisberg's series, describing unwanted touching, repeated requests for massages and frequent sexualised comments about colleagues. Warner Bros. Television suspended him and, after an investigation, terminated his employment. Kreisberg denied the allegations, saying he had commented on appearance but that "they were not sexualized", and that he had never mentored anyone "in what I believe to be an unwanted way". No charge or lawsuit followed.`,
 
     sources: [
-      { label: 'BuzzFeed News — Kreisberg dismissed (2017)', url: 'https://www.buzzfeednews.com/article/coralewis/supergirl-producer-suspended' },
-      { label: 'TV Insider — investigation and termination (2017)', url: 'https://www.tvinsider.com/652066/arrowverse-executive-producer-andrew-kreisberg-fired-sexual-misconduct-investigation/' }
+      { label: 'BuzzFeed News: Kreisberg dismissed (2017)', url: 'https://www.buzzfeednews.com/article/coralewis/supergirl-producer-suspended' },
+      { label: 'TV Insider: investigation and termination (2017)', url: 'https://www.tvinsider.com/652066/arrowverse-executive-producer-andrew-kreisberg-fired-sexual-misconduct-investigation/' }
     ]
   }
 ];
 
-/* The five 1–7 rating items. Every point is labelled, following Jebb, Ng & Tay
+/* The five 1-7 rating items. Every point is labelled, following Jebb, Ng & Tay
    (2021), who report that fully-labelled scales outperform endpoint-only ones. */
 const ITEMS = [
   {
@@ -824,10 +870,10 @@ const MEASURE_LABELS = {
   keep: 'Would keep watching'
 };
 
-const AGE_BANDS = ['Under 18', '18–24', '25–34', '35–44', '45–54', '55–64', '65 or over', 'Prefer not to say'];
+const AGE_BANDS = ['Under 18', '18-24', '25-34', '35-44', '45-54', '55-64', '65 or over', 'Prefer not to say'];
 
 const REGIONS = [
-  'Africa', 'Asia — Central & South', 'Asia — East & Southeast', 'Europe',
+  'Africa', 'Asia: Central & South', 'Asia: East & Southeast', 'Europe',
   'Latin America & Caribbean', 'Middle East & North Africa',
   'North America', 'Oceania', 'Prefer not to say'
 ];
@@ -837,10 +883,11 @@ const WATCH_FREQ = [
   'Rarely', 'Almost never'
 ];
 
+const PAPER = {"title": "Separating Art from the Artist: Does Knowing About a Creator's Misconduct Change How Audiences Enjoy Television?", "byline": "Adelya Medelbekova · ENGL 1102, University of the People", "pending": true, "sections": [{"title": "Abstract", "html": "<p>Experiments have repeatedly shown that negative moral information about an artist lowers how much people appreciate that artist&#x27;s work. Almost all of the evidence comes from paintings: still, silent, produced by one identifiable person. Television is none of those things, yet television is where the public argument about separating the art from the artist actually happens. This study asks whether the art-artist effect survives the move to a narrative, collaboratively produced medium. Adult participants are randomly assigned to an informed condition, which supplies a short sourced account of a documented controversy involving a show&#x27;s creator, or a control condition, which supplies neutral production background of matched length. Both groups watch the same three clips and rate each on five 1-to-7 scales: enjoyment, emotional response, craft quality, moral discomfort, and willingness to keep watching. One open-ended item captures reasoning the scales cannot. Three predictions are tested: that informed viewers report lower enjoyment; that the reduction is smaller than the one reported for paintings; and that misconduct knowledge depresses enjoyment and raises discomfort while leaving craft judgements intact. Data collection through a purpose-built public website is ongoing, so results are reported as an analysis plan with anticipated outcomes rather than as findings.</p><p><em>Keywords:</em> art-artist effect, moral judgement, television, narrative transportation, audience research</p>"}, {"title": "Introduction", "html": "<p>In March 2024 a documentary series called <em>Quiet on Set</em> laid out allegations about the working conditions behind a run of Nickelodeon shows that a lot of people my age grew up on (Robertson &amp; Schwartz, 2024). I watched it, and then I did something I could not really justify: I went back and rewatched an episode of one of those shows. It was not as funny as I remembered, and I could not tell whether that was the show or me.</p><p>That is a personal reaction, not a finding. But the question underneath it can be tested. Does knowing what a creator did actually change how much a viewer enjoys the work, or does it only change what viewers feel able to say about it? Researchers have already answered a version of this question for paintings, and the answer was yes (Kaube et al., 2023). The answer for television is unknown, which is strange, because television is the medium the public argument is mostly about.</p><p>This paper compiles the research proposal I have been developing across this course into a single document. It sets out the background, states the gap the study addresses, gives its objectives and questions, reviews the relevant literature, describes the method in enough detail to be replicated, and explains how the resulting data will be analysed. Because participants are still being recruited through the study website, the results section reports the analysis plan and the expected pattern rather than completed findings.</p><p>Compiling it also meant revising it. Weaver et al. (2016) separate revising, which reworks ideas and structure, from editing, the later sentence-level pass - and treating those as two jobs rather than one caught problems I had read past several times. Hall and Wallace (2018) add that it helps to reread a draft hunting specifically for the errors you already know you repeat. Both passes changed this document. One source had been cited under two different author names across earlier units and is now consistent; claims that sat unsupported in an earlier abstract have moved into the body, where they carry citations.</p>"}, {"title": "Background", "html": "<p>The idea that a work&#x27;s moral standing should affect its artistic standing is not new. Kieran (2006) mapped the dispute between critics who hold that artistic value is independent of ethical content and those who hold the two are entangled, concluding that a work&#x27;s ethical character can legitimately bear on its value as art. For a long time that dispute was conducted entirely through argument.</p><p>Over the last decade it has become an empirical question instead. Liao (2024) surveys the experimental turn in aesthetics and describes work showing that information about who made something, and how they behaved, reliably shifts how people evaluate it. The clearest demonstration comes from Kaube et al. (2023), who paired paintings with either neutral or negative biographical information about the painter. Participants liked the negatively framed paintings less and showed stronger, faster neural responses to them, but their ratings of technical skill did not move. A follow-up reproduced the effect for both famous and unknown artists and found it appearing in early perceptual components, which suggests the bias is not simply a deliberate decision to disapprove (Kaube &amp; Abdel Rahman, 2024). Paruzel-Czachura et al. (2026) reached the same conclusion from a different direction, finding that paintings attributed to a morally condemned figure were rated as less beautiful.</p><p>Public opinion is messier than the laboratory. A YouGov poll of 1,560 American adults found that 47% had stopped supporting an artist over that artist&#x27;s conduct, but 67% said the decision depended on the specific person and accusation (Bebernes, 2025). A larger Pew Research Center survey found Americans split on whether calling out public figures amounts to accountability or punishment, along sharply partisan lines (Vogels et al., 2021). So the effect exists, people report acting on it, and almost nobody applies it consistently.</p>"}, {"title": "Problem Statement", "html": "<p>The gap is the medium. Nearly all of the experimental evidence concerns static, single-author visual art, and it asks participants to judge one object. The art that generates public controversy is not like that. A television series unfolds over time, absorbs the viewer in a story, and is made by hundreds of people whose names most viewers never learn.</p><p>Both of those differences give reason to expect the effect to weaken. Narrative absorption competes for the attention that moral evaluation would otherwise use, and shared authorship makes it harder to hold the object responsible for one person&#x27;s behaviour. Goetz et al. (2025) provide indirect support, showing that framing and context can soften how harshly people evaluate morally troubling material. Neither of these has been tested on television.</p><p>Because a problem statement must identify both a gap in knowledge and a reason that closing it matters (National University, 2024), it is worth being explicit about the stakes. Theoretically, testing television probes a boundary condition of the art-artist effect: finding it would show the effect generalises beyond the still image, and failing to find it would show the painting literature has been describing something narrower than it appears. Practically, networks, streaming services and audiences make consequential decisions about narrative media - pulling shows, recasting, cancelling revivals - on the working assumption that a moral penalty transfers. No study has tested that assumption in the medium where the decisions are actually made.</p>"}, {"title": "Objectives and Research Questions", "html": "<p>Following the SMART framework (CFI Team, 2023), the study pursues three objectives, each paired with one question, because research questions should follow directly from objectives (Serdikoff, 2021).</p><p><strong>Objective 1.</strong> To measure whether informing adult viewers of a television creator&#x27;s documented misconduct before viewing reduces self-reported enjoyment of a short clip, relative to viewers given neutral background of matched length, on a 1-to-7 scale.</p><p style=\"margin-left:1.2em;color:var(--text-secondary)\"><em>Question 1.</em> Does prior knowledge of a television creator&#x27;s documented misconduct reduce adult viewers&#x27; enjoyment of a short clip, relative to viewers given neutral information?</p><p><strong>Objective 2.</strong> To compare the size of any such reduction for immersive, multi-authored television against the reduction already reported for static, single-author paintings.</p><p style=\"margin-left:1.2em;color:var(--text-secondary)\"><em>Question 2.</em> Is the reduction in enjoyment for television smaller than the reduction reported for paintings in earlier studies?</p><p><strong>Objective 3.</strong> To distinguish whether misconduct knowledge alters viewers&#x27; emotional response and moral discomfort separately from their evaluation of the show&#x27;s craft.</p><p style=\"margin-left:1.2em;color:var(--text-secondary)\"><em>Question 3.</em> Does misconduct knowledge lower emotional enjoyment and raise moral discomfort while leaving judgements of craft quality unchanged?</p><p>The corresponding directional hypothesis is that adults told about a creator&#x27;s documented misconduct before watching a clip will rate it lower in enjoyment than adults shown the same clip with neutral background. The claim is falsifiable in the sense Serdikoff (2021) requires: the two groups could rate the clip identically, or the informed group could rate it higher.</p>"}, {"title": "Literature Review", "html": "<p>Four bodies of work bear on the question, and they pull in different directions.</p><p>The first is the art-artist literature already described. Its finding is consistent and its mechanism is now reasonably well specified: negative moral knowledge depresses liking and emotional response while leaving assessments of technical quality largely untouched (Kaube et al., 2023; Kaube &amp; Abdel Rahman, 2024; Paruzel-Czachura et al., 2026). That dissociation is what Objective 3 borrows directly, and it is the reason this study measures craft separately rather than folding everything into one enjoyment score.</p><p>The second concerns narrative transportation. Green and Appel (2024), reviewing several decades of work, report that transported audiences are markedly less likely to counterargue what a narrative presents, because attention is occupied by the story rather than by critical evaluation. Thomas and Grigsby (2024) confirm in a systematic review of 95 studies that the construct holds as media have shifted from text to video. If transportation reduces critical processing, a viewer absorbed in a scene may have little spare attention for the moral information they read two minutes earlier. This is the strongest reason to expect an attenuated effect, and it gives the study a named mechanism for a small or null result rather than leaving one to conclude the manipulation simply failed.</p><p>The third concerns how blame is distributed. Keshmirian et al. (2022) found across three experiments with more than 2,200 participants that people assign less punishment to an individual when a harmful act was committed collectively, and traced the effect to discounting of causal contribution rather than leniency about intent. A television series is about as collective as production gets. If moral taint follows causal contribution, a showrunner&#x27;s conduct should contaminate a finished episode less than a painter&#x27;s conduct contaminates a canvas.</p><p>The fourth concerns the viewer&#x27;s relationship with the figures involved. Schramm et al. (2024), reviewing 281 studies, note that parasocial research has concentrated on positive bonds and neglected what happens when those bonds turn negative - precisely the situation this study creates. Lotun et al. (2024) found across three studies with over 3,000 participants that people rate strong parasocial relationships as more effective than acquaintanceships at meeting emotional needs, suggesting that discovering a creator&#x27;s misconduct may function less like receiving information and more like a betrayal. Schumann (2019) adds a moderator: evaluating real #MeToo-era apologies, participants who believed character is changeable judged apologisers more favourably than those who believed it is fixed. Since the cases here differ in whether the person apologised, denied, or admitted, that variation is worth recording even though the study is not powered to test it.</p><p>Taken together, the first body of work predicts an effect and the other three predict it should be smaller here than in the painting studies. That is the tension the study is designed to resolve.</p>"}, {"title": "Methodology", "html": "<p><strong>Design.</strong> The study uses a mixed-methods design with a dominant quantitative strand, because questions comparing group averages on a measured outcome require the numerical measurement and statistical comparison that define quantitative work (Serdikoff, 2021). Condition (informed versus control) is manipulated between subjects; clip is a within-subjects factor. One open-ended item supplies the qualitative strand, analysed thematically across the whole dataset.</p><p><strong>Participants.</strong> Adults aged 18 and over are recruited through social media, student networks and word of mouth. Sampling is by volunteer convenience, which limits generalisation: projecting results onto a wider population would require probability-based sampling (National University, 2024), and people who choose to take part in a study about creator misconduct may hold stronger prior views than the general audience. The target is at least 120 completed responses, roughly 60 per condition, yielding three ratings each.</p><p><strong>Materials.</strong> Eight cases pair a series with a documented controversy involving its creator, each of a different type: alleged workplace abuse (<em>Buffy the Vampire Slayer</em>), alleged sexual harassment denied (<em>Arrow</em>) and acknowledged (<em>The Loud House</em>), acknowledged harassment followed by a public apology (<em>Community</em>), alleged grooming of minors (<em>The Ren &amp; Stimpy Show</em>), alleged workplace misconduct (<em>Victorious</em>), a public statement widely reported as racist (<em>Roseanne</em>), and workplace allegations in which the creator was not personally accused (<em>The Ellen DeGeneres Show</em>).</p><p>Each case has two background texts of closely matched length, roughly 95 words, so reading time cannot differ systematically between conditions. The control text gives neutral production facts. The informed text describes the controversy from published reporting, attributes every allegation to a named source, and reports the person&#x27;s response - denial, apology or admission - alongside it. Nothing contested is stated as established fact. Clips run one to four minutes and are embedded from official rights-holder channels.</p><p><strong>Procedure.</strong> Participants reach the study through a public website (Medelbekova, 2026). They read a plain-language information page including a content warning, give consent, then supply an optional self-chosen nickname, an age band, a world region and a viewing-frequency estimate; no name, email address or other identifying information is collected. The site assigns each participant at random to a condition and draws three of the eight cases at random. For each case the participant reads the background text for their condition, watches the clip, and completes the ratings. After the third clip they answer the open-ended item and are debriefed: the design is explained, their condition is disclosed, and the sources are listed for both groups.</p><p><strong>Measures.</strong> Five items use 1-to-7 scales: enjoyment (the primary outcome), strength of emotional response, craft quality, moral discomfort, and likelihood of watching more. Every scale point is verbally labelled rather than only the endpoints, following Jebb et al. (2021), who report that fully labelled scales outperform endpoint-only ones. Two covariates are recorded per clip: whether the participant had seen the show, and whether they already knew about the controversy. The second matters, because someone who already knew is not receiving new information and belongs in a separate analysis.</p><p><strong>Analysis.</strong> Question 1 is tested by comparing mean enjoyment between conditions using an independent-samples <em>t</em> test with Welch&#x27;s correction, reported with Cohen&#x27;s <em>d</em> and a 95% confidence interval. Question 2 compares that effect size against published effects for paintings; because the comparison is across studies rather than within one design, it is treated as descriptive. Question 3 repeats the comparison for the remaining four measures, the predicted pattern being differences for enjoyment, emotional response and moral discomfort but none for craft quality. All analyses are repeated excluding participants who reported prior knowledge. Open-ended responses are coded inductively and grouped into themes.</p><p><strong>Ethics and data quality.</strong> No personal data is collected or stored. Participation is voluntary, the content warning precedes consent, and closing the tab discards the session. Inattention is a known weakness of online convenience samples (Douglas et al., 2023); requiring every item to be answered before advancing, and recording completion time, gives a basic screen. Aggregate results are published live so participants can see what their answers contributed.</p>"}, {"title": "Results", "html": "<p>Data collection opened with the launch of the study website and is ongoing at the time of submission, so no inferential statistics can yet be reported. This section sets out the reporting structure that the completed analysis will fill, so that the results can be added without redesigning the presentation.</p><p>Descriptive statistics will be reported first: the number of participants, the number of clip ratings, and the distribution of age bands, world regions and viewing frequency across the two conditions, to confirm that random assignment produced comparable groups. Table 1 gives the primary comparison.</p><p><strong>Table 1</strong></p><p><em>Mean ratings by condition (1-7 scale), to be completed on close of data collection</em></p><p><em>Note.</em> Control participants read neutral production background; informed participants read a sourced account of the creator&#x27;s documented controversy. <em>N</em> per condition to be reported.</p><p>A second table will break enjoyment down by case, since the eight controversies differ in type and severity and the effect may not be uniform across them. A third analysis will repeat the primary comparison excluding participants who reported already knowing about the controversy. The distribution of enjoyment ratings across all seven scale points will be reported for each condition, because a shift in the mean can conceal quite different underlying patterns - a small uniform drop and a polarised split produce the same average.</p><p>The qualitative strand will be reported as a set of themes with illustrative quotations, drawn only from participants who explicitly agreed to be quoted. Provisional impressions from early responses suggest at least three recurring positions, which the completed analysis will test against the full dataset: that the severity and type of the conduct matters more than its existence; that collaborative authorship makes viewers reluctant to punish a whole production for one person; and that awareness persists as a background discomfort without stopping viewing.</p>"}, {"title": "Discussion", "html": "<p>Until the data are in, what follows is an account of what each possible outcome would mean, written in advance so that the interpretation is not fitted to the result after the fact.</p><p>If informed participants rate the clips meaningfully lower in enjoyment, the art-artist effect transfers from paintings to television and is not an artefact of the still image. That would matter, because the moral penalty would be operating even where authorship is diffuse and attention is occupied by a story. If, as predicted, the reduction is smaller than the effects reported for paintings, the literature already supplies two explanations: transported viewers counterargue less and have less attention available for the moral frame (Green &amp; Appel, 2024), and blame is discounted when an act is embedded in collective production (Keshmirian et al., 2022). Distinguishing between them would require a further study manipulating immersion and authorship independently.</p><p>The predicted dissociation is the part I find most interesting. If enjoyment and emotional response fall while craft ratings hold steady, viewers are not revising their judgement of the work but their relationship to it - consistent with both the painting findings and the parasocial account of media bonds as psychologically real (Lotun et al., 2024). What people lose, on that reading, is not a belief about quality but the ability to be uncomplicatedly pleased.</p><p>A null result would be no less useful. It would place a boundary on the painting literature and indicate that findings from single-author visual art should not be assumed to travel. Alternatively it might show that one to four minutes is not enough exposure for immersion to matter, which is itself testable.</p><p>Several limitations should be read alongside any result. The sample is self-selected, and people who volunteer for a study about creator misconduct may not resemble a general audience. Clips differ in genre, era and tone, so between-case differences confound stimulus properties with controversy type. Some participants will already know a given controversy, which weakens the manipulation for them; hence the covariate and the repeated analysis. In one case the creator is also the on-screen star, which plausibly strengthens the association. Finally, self-reported enjoyment can be shaped by what participants think the researcher wants to hear, and the study has no behavioural measure to check it against.</p>"}, {"title": "Conclusion", "html": "<p>The question of whether art can be separated from its maker is usually argued as though it had a single answer. The research reviewed here suggests it does not. Moral information about an artist demonstrably changes how audiences respond to a painting, but there are principled reasons - narrative absorption and the diffusion of blame across a large production team - to expect that the same information does less work when the art in question is a television series.</p><p>This study is built to find out which is true, using an experiment that is small enough for an undergraduate to run and public enough for anyone to check. What began as a private inconsistency - rewatching a show I had just learned uncomfortable things about - turned out to be a question with a testable form, and the process of narrowing it is most of what I have taken from this course. Whether the effect transfers, transfers weakly, or fails to transfer at all, the finding will say something about how far a body of evidence built on paintings can be trusted to describe how people actually watch television.</p>"}]};
 /* ==========================================================================
-   Art vs. Artist — application logic
+   Art vs. Artist: application logic
    No frameworks, no build step, no external requests except the YouTube
-   embeds and (once configured) the Google Apps Script endpoint.
+   embeds and the Google Apps Script endpoint.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -897,12 +944,11 @@ function shuffle(arr) {
   }
   return a;
 }
-const fmt = (n, d = 2) => (n == null || isNaN(n)) ? '—' : Number(n).toFixed(d);
+const fmt = (n, d = 2) => (n == null || isNaN(n)) ? 'n/a' : Number(n).toFixed(d);
 
 function chips(host, values, name, onPick) {
-  host.innerHTML = values.map((v, i) => `
-    <label class="chip"><input type="radio" name="${name}" value="${esc(v)}"
-      ${i === 0 ? '' : ''}><span>${esc(v)}</span></label>`).join('');
+  host.innerHTML = values.map((v) => `
+    <label class="chip"><input type="radio" name="${name}" value="${esc(v)}"><span>${esc(v)}</span></label>`).join('');
   host.querySelectorAll('input').forEach(inp => {
     inp.addEventListener('change', () => onPick && onPick(inp.value));
   });
@@ -913,15 +959,27 @@ const chipVal = (name) => {
 };
 
 /* ------------------------------------------------------------ navigation - */
-const STEPS = ['welcome', 'about', 'clip', 'open', 'debrief'];
+const STEPS = ['welcome', 'about', 'clipVideo', 'clipBrief', 'clipDetail',
+               'open', 'debrief', 'paperGate', 'paper'];
+
+/* Three screens per clip, so the bar advances a third at a time. */
+const SUB = { clipVideo: 0, clipBrief: 1, clipDetail: 2 };
+
 function show(step) {
   STEPS.forEach(s => { const el = $('step-' + s); if (el) el.hidden = (s !== step); });
   $('dashWrap').hidden = true;
   $('main').hidden = false;
-  window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
-  const pct = { welcome: 0, about: 12, clip: 22, open: 82, debrief: 94 }[step] || 0;
-  const extra = step === 'clip' ? (S.idx / CONFIG.CLIPS_PER_PARTICIPANT) * 58 : 0;
-  $('rail').style.width = (pct + extra) + '%';
+  window.scrollTo({ top: 0 });
+
+  const base = { welcome: 0, about: 10, open: 84, debrief: 95, paperGate: 0, paper: 0 };
+  let pct;
+  if (step in SUB) {
+    const perClip = 70 / CONFIG.CLIPS_PER_PARTICIPANT;
+    pct = 14 + S.idx * perClip + (SUB[step] / 3) * perClip;
+  } else {
+    pct = base[step] || 0;
+  }
+  $('rail').style.width = pct + '%';
 }
 function showDash() {
   STEPS.forEach(s => { const el = $('step-' + s); if (el) el.hidden = true; });
@@ -960,6 +1018,7 @@ $('btnConsent').addEventListener('click', () => {
 $('btnSkipToResults').addEventListener('click', () => loadDash());
 $('btnResults').addEventListener('click', () => loadDash());
 $('btnHome').addEventListener('click', () => show('welcome'));
+$('btnAbout2').addEventListener('click', () => show('welcome'));
 
 /* ============================== STEP 2 =================================== */
 function buildAbout() {
@@ -972,30 +1031,54 @@ $('btnAbout').addEventListener('click', () => {
   if (!age || !region || !freq) { $('aboutErr').hidden = false; return; }
   $('aboutErr').hidden = true;
   S.about = { nickname: $('nickname').value.trim().slice(0, 24), age, region, freq };
-  renderClip();
-  show('clip');
+  renderClipVideo();
+  show('clipVideo');
 });
 
-/* ============================== STEP 3 =================================== */
-function renderClip() {
+/* ====================== STEP 3a: the clip ================================ */
+const eyebrow = () =>
+  `Step 2 of 3 · Clip ${S.idx + 1} of ${CONFIG.CLIPS_PER_PARTICIPANT}`;
+
+function renderClipVideo() {
+  const c = S.clips[S.idx];
+  $('videoEyebrow').textContent = eyebrow();
+  $('videoShow').textContent = c.show;
+  $('clipFrame').src =
+    `https://www.youtube-nocookie.com/embed/${c.video}?rel=0&modestbranding=1`;
+  $('clipCredit').textContent = `“${c.clipTitle}”, ${c.channel}`;
+  $('clipDirect').href = `https://www.youtube.com/watch?v=${c.video}`;
+}
+
+$('btnVideo').addEventListener('click', () => {
+  renderClipBrief();
+  show('clipBrief');
+});
+
+/* ====================== STEP 3b: the background ========================== */
+function renderClipBrief() {
   const c = S.clips[S.idx];
   const text = S.condition === 'informed' ? c.informed : c.neutral;
 
-  $('clipEyebrow').textContent =
-    `Step 2 of 3 · Clip ${S.idx + 1} of ${CONFIG.CLIPS_PER_PARTICIPANT}`;
-  $('clipShow').textContent = c.show;
-  $('clipMeta').textContent = `${c.network} · created by ${c.creator}`;
+  $('briefEyebrow').textContent = eyebrow();
+  $('briefShow').textContent = c.show;
+  $('briefMeta').textContent = `${c.network} · created by ${c.creator}`;
   $('clipBrief').textContent = text;
-
   $('clipSrcs').innerHTML = S.condition === 'informed'
     ? 'Sources: ' + c.sources.map(s =>
         `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ')
     : '';
+}
 
-  $('clipFrame').src =
-    `https://www.youtube-nocookie.com/embed/${c.video}?rel=0&modestbranding=1`;
-  $('clipCredit').textContent = `“${c.clipTitle}” — ${c.channel}`;
-  $('clipDirect').href = `https://www.youtube.com/watch?v=${c.video}`;
+$('btnBrief').addEventListener('click', () => {
+  renderClipDetail();
+  show('clipDetail');
+});
+
+/* ====================== STEP 3c: the ratings ============================= */
+function renderClipDetail() {
+  const c = S.clips[S.idx];
+  $('detailEyebrow').textContent = eyebrow();
+  $('detailShow').textContent = c.show;
 
   $('clipQuestions').innerHTML = ITEMS.map(it => `
     <div class="qblock">
@@ -1015,9 +1098,7 @@ function renderClip() {
 
   chips($('seenChips'), ['Yes, I know it well', 'Yes, a little', 'No, never', 'Not sure'], 'seen');
   chips($('knewChips'), ['Yes, I knew about it', 'I had a vague sense', 'No, this is new to me'], 'knew');
-
   $('clipErr').hidden = true;
-  window.scrollTo({ top: 0 });
 }
 
 $('btnClip').addEventListener('click', () => {
@@ -1038,7 +1119,7 @@ $('btnClip').addEventListener('click', () => {
 
   $('clipFrame').src = 'about:blank';
 
-  if (S.idx < S.clips.length) { renderClip(); show('clip'); }
+  if (S.idx < S.clips.length) { renderClipVideo(); show('clipVideo'); }
   else { buildOpen(); show('open'); }
 });
 
@@ -1076,7 +1157,7 @@ $('btnSubmit').addEventListener('click', async () => {
     ratings: S.ratings
   };
 
-  // Never trap a participant behind a spinner: if the network is slow, move on
+  // Never trap a participant behind a spinner. If the network is slow, move on
   // and let the request finish in the background.
   try {
     await giveUpAfter(submit(payload), 12000, { ok: true, slow: true });
@@ -1099,45 +1180,77 @@ function renderDebrief() {
 
     <div class="card">
       <p>${informed
-        ? `Before each clip you read a short, factual account of a documented controversy involving that show's creator. Every claim in those texts is sourced, hedged where the allegation is contested, and reports the person's response — denial, apology or admission — alongside the accusation.`
-        : `Before each clip you read neutral production background: when the show aired, who made it, how it was filmed. No controversy was mentioned to you at all.`}</p>
-      <p>The other half of participants saw the opposite. Both texts were written to a matched length, so any difference between the groups comes from <em>what</em> was said and not from how long people spent reading. Everything else — the clips, the questions, the order — was identical.</p>
+        ? `After each clip you read a short, factual account of a documented controversy involving that show's creator. Every claim in those texts is sourced, hedged where the allegation is contested, and reports the person's response, whether that was a denial, an apology or an admission, alongside the accusation.`
+        : `After each clip you read neutral production background: when the show aired, who made it, how it was filmed. No controversy was mentioned to you at all.`}</p>
+      <p>The other half of participants saw the opposite. Both texts were written to a matched length, so any difference between the groups comes from <em>what</em> was said rather than from how long people spent reading. Everything else, including the clips, the questions and the order, was identical.</p>
       <p style="margin-bottom:0">You saw: <strong>${esc(shown)}</strong>.</p>
     </div>
 
     <h3 style="margin-top:30px">Why it's built this way</h3>
-    <p>Earlier experiments established that moral information about an artist lowers how much people appreciate their work — but almost all of that evidence comes from <em>paintings</em>: still, silent, made by one identifiable person. Television is none of those things. It moves, it tells a story you get absorbed in, and it is made by hundreds of people, which means blame for one person's conduct is much harder to pin to the object in front of you.</p>
-    <p>So the question isn't only "does knowing hurt enjoyment" — it's <strong>whether a finding proven for paintings survives the jump to the medium people actually argue about</strong>. Your five ratings were designed to pull that apart: enjoyment and emotional response on one side, judgement of craft on the other, and moral discomfort in between. If knowing changes how you <em>feel</em> without changing what you think of the writing, that's a meaningful result.</p>
+    <p>Earlier experiments established that moral information about an artist lowers how much people appreciate their work, but almost all of that evidence comes from <em>paintings</em>: still, silent, made by one identifiable person. Television is none of those things. It moves, it tells a story you get absorbed in, and it is made by hundreds of people, which makes blame for one person's conduct much harder to pin to the object in front of you.</p>
+    <p>So the question is not only whether knowing hurts enjoyment. It is <strong>whether a finding proven for paintings survives the jump to the medium people actually argue about</strong>. Your five ratings were designed to pull that apart: enjoyment and emotional response on one side, judgement of craft on the other, and moral discomfort in between. If knowing changes how you <em>feel</em> without changing what you think of the writing, that is a meaningful result.</p>
 
     ${informed ? `
     <h3 style="margin-top:30px">The sources you were shown</h3>
     <p class="small">Every background text you read links to reporting you can check yourself:</p>
     <ul class="clean small">
-      ${S.clips.map(c => `<li><strong>${esc(c.show)}</strong> — ` +
+      ${S.clips.map(c => `<li><strong>${esc(c.show)}</strong>: ` +
         c.sources.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ') +
         `</li>`).join('')}
     </ul>` : `
     <h3 style="margin-top:30px">What the other group read</h3>
     <p class="small">For transparency, here is the background the informed group saw for the shows you rated. Each is sourced to published reporting.</p>
     <ul class="clean small">
-      ${S.clips.map(c => `<li><strong>${esc(c.show)}</strong> — ${esc(c.category)}. ` +
+      ${S.clips.map(c => `<li><strong>${esc(c.show)}</strong>: ${esc(c.category)}. ` +
         c.sources.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ') +
         `</li>`).join('')}
     </ul>`}
 
     <div class="notice">
-      Some of this material is upsetting, and reading it can stay with you. If it has, it's worth talking to someone you trust. And if you'd like your response removed from the dataset, the study's contact details are on the results page — quote the nickname you used${S.about.nickname ? ` (<strong>${esc(S.about.nickname)}</strong>)` : ''}.
+      Some of this material is upsetting, and reading it can stay with you. If it has, it is worth talking to someone you trust. And if you would like your response removed from the dataset, the study's contact details are on the results page. Quote the nickname you used${S.about.nickname ? ` (<strong>${esc(S.about.nickname)}</strong>)` : ''}.
     </div>`;
 }
 
 $('btnToDash').addEventListener('click', () => loadDash());
+
+/* =============================== PAPER =================================== */
+$('btnPaper').addEventListener('click', () => {
+  if (localStorage.getItem(LS_DONE) === '1') { renderPaper(); show('paper'); }
+  else show('paperGate');
+});
+$('btnPaperTakeFirst').addEventListener('click', () => show('welcome'));
+$('btnPaperShow').addEventListener('click', () => { renderPaper(); show('paper'); });
+$('btnPaperBack').addEventListener('click', () => show('welcome'));
+
+function renderPaper() {
+  const p = (typeof PAPER !== 'undefined') ? PAPER : null;
+  if (!p || !p.sections || !p.sections.length) {
+    $('paperTitle').textContent = 'The write-up';
+    $('paperBody').innerHTML = `
+      <div class="card">
+        <h3>Not published yet</h3>
+        <p>The full paper goes here once the study closes and the results are in. It will include
+        the abstract, the background, the problem statement, the objectives and questions, the
+        literature review, the method, the results and the conclusion, along with the full
+        reference list.</p>
+        <p style="margin-bottom:0" class="small muted">If you want to be told when it goes up,
+        there is nowhere to leave an address, which is deliberate. Check back instead.</p>
+      </div>`;
+    return;
+  }
+  $('paperTitle').textContent = p.title || 'The write-up';
+  $('paperBody').innerHTML =
+    `<p class="muted small">${esc(p.byline || '')}</p>` +
+    (p.pending ? `<div class="notice">This is the working draft. The results section fills in once data collection closes.</div>` : '') +
+    p.sections.map(s => `<h2 style="margin-top:30px">${esc(s.title)}</h2>${s.html}`).join('');
+}
 
 /* ============================= DATA LAYER ================================ */
 function localRows() {
   try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); } catch (e) { return []; }
 }
 
-/* Stop waiting after `ms`, but let the underlying request carry on — aborting
+/* Stop waiting after `ms`, but let the underlying request carry on. Aborting
    a POST that may already have been written would risk a duplicate on retry. */
 function giveUpAfter(promise, ms, fallback) {
   return Promise.race([
@@ -1162,7 +1275,6 @@ async function submit(payload) {
 
   let res = null;
   try {
-    // keepalive lets the browser finish the write even if the page moves on
     res = await fetch(CONFIG.API_URL, { method: 'POST', body, redirect: 'follow', keepalive: true });
   } catch (networkError) {
     // The request never completed. Retrying is safe: nothing was written.
@@ -1179,7 +1291,7 @@ async function submit(payload) {
 
   // The request DID complete, so the row is already written. Apps Script
   // answers a cross-origin POST through a redirect whose body is not always
-  // our JSON — an unreadable reply is not a failure, and must never trigger a
+  // our JSON. An unreadable reply is not a failure, and must never trigger a
   // retry, or the participant would be recorded twice.
   try {
     return await res.json();
@@ -1309,9 +1421,9 @@ function renderDash(a) {
     body.innerHTML = `
       <div class="card">
         <h3>No responses yet</h3>
-        <p>The dashboard fills in as soon as people start taking part. Every chart below is live — mean enjoyment by group, the spread of ratings, how the five measures move against each other, and what people wrote.</p>
+        <p>The dashboard fills in as soon as people start taking part. Every chart below is live: mean enjoyment by group, the spread of ratings, how the five measures move against each other, and what people wrote.</p>
         <p style="margin-bottom:0" class="small muted">${a.local
-          ? 'This browser is running in local mode: responses you submit here are stored on this device only.'
+          ? 'This browser is running in local mode, so responses you submit here are stored on this device only.'
           : 'Connected to the live response sheet.'}</p>
       </div>`;
     $('dashFooter').innerHTML = footerHtml(a);
@@ -1331,16 +1443,16 @@ function renderDash(a) {
 
     <div class="hero">
       <div class="eyebrow">The headline number</div>
-      <div class="hero__fig">${dEnjoy == null ? '—' : (dEnjoy > 0 ? '+' : '') + fmt(dEnjoy)}</div>
+      <div class="hero__fig">${dEnjoy == null ? 'n/a' : (dEnjoy > 0 ? '+' : '') + fmt(dEnjoy)}</div>
       <p class="hero__cap">${dEnjoy == null ? 'Not enough data yet.' :
-        `points ${dEnjoy < 0 ? 'lower' : 'higher'} on the 1–7 enjoyment scale for viewers who were told about the creator's conduct, compared with viewers who read only neutral background.`}</p>
+        `points ${dEnjoy < 0 ? 'lower' : 'higher'} on the 1 to 7 enjoyment scale for viewers who were told about the creator's conduct, compared with viewers who read only neutral background.`}</p>
     </div>
 
     <div class="kpis">
       ${kpi('Participants', a.nParticipants, 'people who finished')}
       ${kpi('Clip ratings', a.nRatings, 'individual clips rated')}
-      ${kpi('Informed group', ov.informed.enjoy.n || 0, 'ratings · mean ' + fmt(ov.informed.enjoy.mean))}
-      ${kpi('Control group', ov.control.enjoy.n || 0, 'ratings · mean ' + fmt(ov.control.enjoy.mean))}
+      ${kpi('Informed group', ov.informed.enjoy.n || 0, 'ratings, mean ' + fmt(ov.informed.enjoy.mean))}
+      ${kpi('Control group', ov.control.enjoy.n || 0, 'ratings, mean ' + fmt(ov.control.enjoy.mean))}
       ${kpi('Already knew', knewPct + '%', 'knew the controversy beforehand')}
     </div>
 
@@ -1351,7 +1463,7 @@ function renderDash(a) {
         <h3>Enjoyment by show</h3>
         <button class="tabletoggle" data-t="t-case">Table</button>
       </div>
-      <p class="chartcard__sub">Mean enjoyment rating, 1–7. The number at the end of each pair is the gap between the two groups.</p>
+      <p class="chartcard__sub">Mean enjoyment rating, 1 to 7. The number at the end of each pair is the gap between the two groups.</p>
       <div id="c-case"></div>
       <div id="t-case" hidden></div>
     </div>
@@ -1361,7 +1473,7 @@ function renderDash(a) {
         <h3>How the ratings were spread</h3>
         <button class="tabletoggle" data-t="t-dist">Table</button>
       </div>
-      <p class="chartcard__sub">Share of enjoyment ratings at each point of the scale, centred on the neutral midpoint (4).</p>
+      <p class="chartcard__sub">Share of enjoyment ratings at each point of the scale, centred on the neutral midpoint of 4.</p>
       <div id="c-dist"></div>
       <div id="t-dist" hidden></div>
     </div>
@@ -1424,16 +1536,15 @@ const kpi = (label, value, sub) => `
 
 const legendHtml = () => `
   <div class="legend">
-    <span class="legend__item"><span class="legend__swatch" style="background:var(--series-1)"></span> Control — neutral background</span>
-    <span class="legend__item"><span class="legend__swatch" style="background:var(--series-2)"></span> Informed — told about the controversy</span>
+    <span class="legend__item"><span class="legend__swatch" style="background:var(--series-1)"></span> Control, neutral background</span>
+    <span class="legend__item"><span class="legend__swatch" style="background:var(--series-2)"></span> Informed, told about the controversy</span>
   </div>`;
 
 function footerHtml(a) {
   return `
-    <p><strong>${esc(CONFIG.STUDY_TITLE)}</strong> — ${esc(CONFIG.RESEARCHER)}.
-    ${a.local ? 'Running in local mode (responses stored in this browser only).' : 'Live data.'}
-    Last updated ${new Date(a.updatedAt).toLocaleString()}.</p>
-    <p>No personal data is collected or stored. Nicknames are self-chosen and optional. Clips are embedded from official rights-holder channels on YouTube and are not hosted by this site. Background texts cite published reporting; allegations are described as allegations and each person's response is reported alongside.</p>`;
+    <p><strong>${esc(CONFIG.STUDY_TITLE)}</strong>, ${esc(CONFIG.RESEARCHER)}.
+    ${a.local ? 'Running in local mode, so responses are stored in this browser only.' : 'Live data.'}</p>
+    <p>No personal data is collected or stored. Nicknames are self-chosen and optional. Clips are embedded from official rights-holder channels on YouTube and are not hosted by this site. Background texts cite published reporting, allegations are described as allegations, and each person's response is reported alongside.</p>`;
 }
 
 function demoTable(d) {
@@ -1464,7 +1575,7 @@ function bindTip(node, html) {
   node.addEventListener('mousemove', move);
   node.addEventListener('mouseenter', move);
   node.addEventListener('mouseleave', () => { t.style.opacity = '0'; });
-  node.addEventListener('focus', (e) => {
+  node.addEventListener('focus', () => {
     const r = node.getBoundingClientRect();
     move({ clientX: r.left + r.width / 2, clientY: r.top });
   });
@@ -1491,7 +1602,7 @@ function drawByCase(host, a) {
     s += `<line class="gridline" x1="${px(t)}" y1="${PAD_T - 6}" x2="${px(t)}" y2="${H - PAD_B}"/>`;
     s += `<text class="ax" x="${px(t)}" y="${H - PAD_B + 16}" text-anchor="middle">${t}</text>`;
   }
-  s += `<text class="ax" x="${(PAD_L + W - PAD_R) / 2}" y="${H - 4}" text-anchor="middle">Mean enjoyment (1–7)</text>`;
+  s += `<text class="ax" x="${(PAD_L + W - PAD_R) / 2}" y="${H - 4}" text-anchor="middle">Mean enjoyment (1 to 7)</text>`;
 
   rows.forEach((r, i) => {
     const yTop = PAD_T + i * rowH;
@@ -1504,7 +1615,7 @@ function drawByCase(host, a) {
         const w = Math.max(2, px(st.mean) - px(x0));
         s += `<rect class="bar" x="${px(x0)}" y="${y}" width="${w}" height="${BAR}"
                rx="4" ry="4" fill="${col}" tabindex="0" role="img"
-               data-tip="<strong>${esc(r.show)}</strong><br>${name} group<br>mean ${fmt(st.mean)} · n=${st.n}"/>`;
+               data-tip="<strong>${esc(r.show)}</strong><br>${name} group<br>mean ${fmt(st.mean)}, n=${st.n}"/>`;
       });
 
     if (r.control.mean != null && r.informed.mean != null) {
@@ -1518,7 +1629,7 @@ function drawByCase(host, a) {
   wireTips(host);
 }
 
-/* Diverging stacked bar for the ordered 1–7 enjoyment scale.               */
+/* Diverging stacked bar for the ordered 1 to 7 enjoyment scale.            */
 function drawDist(host, a) {
   const conds = [['control', 'Control'], ['informed', 'Informed']];
   const any = conds.some(([c]) => a.dist[c].some(v => v > 0));
@@ -1563,7 +1674,7 @@ function drawDist(host, a) {
       const pct = Math.round(100 * c / tot);
       s += `<rect x="${cursor}" y="${y}" width="${drawW}" height="${BAR}"
              rx="${k === 0 || k === 6 ? 4 : 0}" fill="${COLORS[k]}" tabindex="0" role="img"
-             data-tip="<strong>Rated ${k + 1} / 7</strong><br>${label} group<br>${c} rating${c === 1 ? '' : 's'} · ${pct}%"/>`;
+             data-tip="<strong>Rated ${k + 1} of 7</strong><br>${label} group<br>${c} rating${c === 1 ? '' : 's'}, ${pct}%"/>`;
       if (drawW > 34) {
         s += `<text class="vlabel" x="${cursor + drawW / 2}" y="${y + BAR / 2 + 4}" text-anchor="middle"
                fill="${k >= 4 || k === 0 ? '#fff' : 'var(--text-primary)'}">${pct}%</text>`;
@@ -1616,7 +1727,7 @@ function drawMeasures(host, a) {
       const y = py(st.mean);
       s += `<rect x="${x}" y="${y}" width="${BAR}" height="${Math.max(2, py(1) - y)}"
              rx="4" ry="4" fill="${col}" tabindex="0" role="img"
-             data-tip="<strong>${esc(MEASURE_LABELS[k])}</strong><br>${name} group<br>mean ${fmt(st.mean)} · n=${st.n}"/>`;
+             data-tip="<strong>${esc(MEASURE_LABELS[k])}</strong><br>${name} group<br>mean ${fmt(st.mean)}, n=${st.n}"/>`;
     });
 
     const c = a.overall.control[k].mean, m = a.overall.informed[k].mean;
@@ -1663,7 +1774,7 @@ function tableByCase(host, a) {
       return `<tr><td>${esc(r.show)}</td>
         <td>${fmt(r.control.mean)}</td><td>${r.control.n}</td>
         <td>${fmt(r.informed.mean)}</td><td>${r.informed.n}</td>
-        <td>${d == null ? '—' : (d > 0 ? '+' : '') + fmt(d)}</td></tr>`;
+        <td>${d == null ? 'n/a' : (d > 0 ? '+' : '') + fmt(d)}</td></tr>`;
     }).join('')}</tbody></table>`;
 }
 
@@ -1688,7 +1799,7 @@ function tableMeasures(host, a) {
     return `<tr><td>${esc(MEASURE_LABELS[k])}</td>
       <td>${fmt(c.mean)}</td><td>${fmt(c.sd)}</td>
       <td>${fmt(m.mean)}</td><td>${fmt(m.sd)}</td>
-      <td>${d == null ? '—' : (d > 0 ? '+' : '') + fmt(d)}</td></tr>`;
+      <td>${d == null ? 'n/a' : (d > 0 ? '+' : '') + fmt(d)}</td></tr>`;
   }).join('')}</tbody></table>`;
 }
 
@@ -1697,7 +1808,7 @@ $('btnCsv').addEventListener('click', () => {
   const a = S.agg;
   if (!a) return;
   const L = [];
-  L.push(['Art vs. Artist — summary export', new Date().toISOString()]);
+  L.push(['Art vs. Artist summary export', new Date().toISOString()]);
   L.push([]);
   L.push(['Participants', a.nParticipants, 'Clip ratings', a.nRatings]);
   L.push([]);
@@ -1732,6 +1843,7 @@ $('btnCsv').addEventListener('click', () => {
 
 /* ------------------------------ deep links ------------------------------- */
 if (location.hash === '#results') loadDash();
+else if (location.hash === '#paper') show('paperGate');
 else show('welcome');
 
 </script>
